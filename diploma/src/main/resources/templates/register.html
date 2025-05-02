@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tirkelu</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="registration-form">
+    <h2>Тіркелу</h2>
+    <form th:action="@{/register}" method="POST" th:object="${registrationRequest}">
+        <div class="form-group">
+            <label for="name">Аты</label>
+            <input type="text" id="name" th:field="*{name}" placeholder="Атыңызды енгізіңіз" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Электрондық пошта</label>
+            <input type="email" id="email" th:field="*{email}" placeholder="email енгізіңіз" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Құпия сөз</label>
+            <input type="password" id="password" th:field="*{password}" placeholder="Құпия сөзді енгізіңіз" required>
+        </div>
+
+        <div th:if="${#fields.hasErrors('name')}" class="error-message">
+            <p th:errors="*{name}" style="color: red;"></p>
+        </div>
+        <div th:if="${#fields.hasErrors('email')}" class="error-message">
+            <p th:errors="*{email}" style="color: red;"></p>
+        </div>
+        <div th:if="${#fields.hasErrors('password')}" class="error-message">
+            <p th:errors="*{password}" style="color: red;"></p>
+        </div>
+
+        <div th:if="${error}" class="error-message">
+            <p th:text="${error}" style="color: red;"></p>
+        </div>
+
+        <button type="submit" class="register-btn">Тіркелу</button>
+    </form>
+    <p class="note">
+        Есептік жазбаңыз бар ма?
+        <a th:href="@{/login}">Жүйеге кіру</a>
+    </p>
+</div>
+</body>
+</html>

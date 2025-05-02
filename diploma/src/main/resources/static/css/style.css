@@ -1,0 +1,519 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Lobster&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.menu{
+    display: block;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    
+}
+.logo{
+    width: 64px;
+    height: 64px;
+}
+.menu-list{
+    width: 100%;
+    list-style-type: none;
+    color: #ffff;
+    font-family: "Lobster", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+}
+
+
+
+
+/* .menu-item-logo{
+    float: left;
+} */
+
+
+
+.menu-item{
+    float: left;
+    width: 20%;
+    transition: 1s;
+    margin: auto;
+    
+}
+
+
+
+.menu-item a{
+    text-decoration: none;
+    color: #f0f8ff;
+}
+
+.menu-item a:hover{
+    color: #008c9e;
+    font-size: 22px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.image-container img {
+    position: absolute;
+    left: 2px;
+    width: 50px; /* Уменьшаем ширину картинки */
+    height: auto; /* Пропорциональная высота */
+    cursor: pointer;
+    top: 300px;
+    transition: left 1s ease; /* Плавное движение */
+}
+
+.hidden-block {
+    display: none; /* Блок скрыт по умолчанию */
+    position: absolute;
+    top: 5px;
+    left: -300px; /* Изначально скрыт за левым краем */
+    width: 300px;
+    height: 900px;
+    padding: 10px;
+    background-color: #00bcd4; /* Установлен цвет */
+    color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: left 1s ease; /* Плавное движение */
+    opacity: 0.8; /* Уровень прозрачности (от 0 до 1) */
+}
+
+.hover-text {
+    display: block;
+    color: white; /* Белый текст по умолчанию */
+    cursor: pointer; /* Указывает, что элемент интерактивный */
+    transition: color 0.3s ease; /* Плавный переход цвета текста */
+    text-decoration: none;
+}
+
+.hover-text:hover {
+    color: yellow; /* Цвет текста при наведении мыши */
+}
+
+
+.banner{
+    height: 100vh;
+    width: 100%;
+    background-image: url('../images/banner.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+
+}
+
+.medicines{
+}
+/* 
+.medicine-image{
+    width: 100px;
+    height: 50px;
+} */
+
+
+
+.diseases {
+    height: 100vh;
+    background-color: #f0f8ff; /* Мягкий светло-голубой фон */
+    padding: 20px;
+    text-align: center;
+}
+.welcome-link{
+    display: block;
+    margin: auto;
+    width: 50%;
+}
+
+.welcome-link-img:hover{
+    width: 120px;
+    opacity: 1;
+}
+
+
+
+.diseases{
+    text-align: center;
+}
+.diease {
+    display: inline-block;
+    width: 28%;
+    height: 600px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для карточек */
+    margin: 15px;
+
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.diease:hover {
+    transform: scale(1.05); /* Увеличение при наведении */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Глубокая тень при наведении */
+}
+.dieases-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Адаптация изображения по размеру */
+    border-bottom: 2px solid #00bcd4; /* Разделительная линия */
+}
+.dieases-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333333;
+    margin: 15px 0 10px 0;
+}
+
+.dieases-dec {
+    font-size: 1rem;
+    color: #666666;
+    line-height: 1.6;
+    padding: 0 15px;
+    text-align: justify;
+    height: 40%;
+}
+
+.dieases-link {
+    display: inline-block;
+    margin: 15px 0 20px 0;
+    text-decoration: none;
+    background-color: #00bcd4; /* Цвет кнопки */
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.dieases-link:hover {
+    background-color: #008c9e; /* Темнее при наведении */
+    transform: translateY(-3px); /* Легкий подъем при наведении */
+}
+body {
+ 
+    font-family: Arial, sans-serif;
+}
+
+
+.banner-details {
+    height: 70vh;
+    width: 100%;
+    background-image: url('../images/robot.webp');
+    background-repeat: no-repeat;
+    background-size: 100% 500px;
+    background-position: top;
+}
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    top: 20px;
+  }
+  
+  .carousel {
+    display: flex;
+    animation: scroll 30s linear infinite;
+  }
+  
+  .carousel-item {
+    flex: 0 0 auto;
+    text-align: center;
+  }
+  
+  .medicine-image {
+    width: 150px;
+    height: 150px;
+    margin: 0 10px;
+  }
+  
+  /* Анимация для бесшовного скролла */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .disease-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Отступ между колонками */
+}
+
+.column {
+    flex: 1; /* Равномерное распределение ширины колонок */
+}
+
+.column img {
+    max-width: 100%; /* Изображение подстраивается под размер колонки */
+    height: auto; /* Сохранение пропорций изображения */
+}
+
+
+.footer {
+    margin-top: 20px;
+    background-color: #f8f8f8;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    border-top: 500px solid #ddd;
+    width: 100%;
+    height: 20vh;
+
+}
+
+.footer-column {
+    flex: 1;
+    max-width: 300px;
+    margin: 0 15px;
+}
+
+.footer-column h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.footer-column p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 14px;
+}
+
+.footer-column a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+}
+.social-link {
+    margin-bottom: 10px;
+}
+
+.social-item {
+    text-decoration: none;
+    font-size: 16px;
+    color: #000;
+    display: flex;
+    align-items: center;
+}
+
+.social-item:hover {
+    color: #007bff; /* Пример изменения цвета при наведении */
+}
+
+.social-img {
+    width: 40px;
+    height: 30px;
+    margin-right: 8px; /* Отступ между картинкой и текстом */
+}
+/* Стили для нового блока */
+/* Стили для нового блока */
+.content-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 50px; /* Отступ сверху */
+    animation: fadeIn 1.5s ease-in-out; /* Анимация появления */
+}
+
+.content-left {
+    flex: 1;
+    padding-right: 20px;
+    animation: slideInLeft 1.5s ease-out; /* Анимация для изображения */
+}
+
+.content-right {
+    flex: 2;
+    animation: slideInRight 1.5s ease-out; /* Анимация для текста */
+}
+
+.content-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 20px; /* Отступ сверху */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень для изображения */
+    transition: transform 0.3s ease; /* Эффект при наведении */
+}
+.content-right p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444444;
+    text-align: justify;
+    background-color: #f9f9f9; /* Светлый фон */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень для текста */
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Шапка */
+.banner {
+    background-color: #0078d7;
+    padding: 15px 0;
+    color: #fff;
+    text-align: center;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.menu-item {
+    margin: 0 15px;
+}
+
+.menu-item a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Личный кабинет */
+.personal-account {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.account-header h2 {
+    text-align: center;
+    color: #333;
+}
+
+.chat-section {
+    margin-top: 20px;
+}
+
+/* Окно чата */
+.chat-window {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-message {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: #d1e7dd;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: #f8d7da;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+/* Форма отправки сообщения */
+.chat-form {
+    display: flex;
+    margin-top: 10px;
+}
+
+.chat-form input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    font-size: 14px;
+}
+
+.chat-form button {
+    background-color: #0078d7;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.chat-form button:hover {
+    background-color: #005bb5;
+}
