@@ -3,46 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tirkelu</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <title>MedBot - Тіркелу</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/animations.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<div class="registration-form">
-    <h2>Тіркелу</h2>
-    <form th:action="@{/register}" method="POST" th:object="${registrationRequest}">
-        <div class="form-group">
-            <label for="name">Аты</label>
-            <input type="text" id="name" th:field="*{name}" placeholder="Атыңызды енгізіңіз" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Электрондық пошта</label>
-            <input type="email" id="email" th:field="*{email}" placeholder="email енгізіңіз" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Құпия сөз</label>
-            <input type="password" id="password" th:field="*{password}" placeholder="Құпия сөзді енгізіңіз" required>
-        </div>
+    <!-- Header Navigation -->
+    <header class="menu">
+        <ul class="menu-list">
+            <li class="menu-item">
+                <a th:href="@{/}">
+                    <img class="logo" th:src="@{/images/medicine.png}" alt="MedBot Logo">
+                </a>
+            </li>
+            <li class="menu-item"><a th:href="@{/}">Басты бет</a></li>
+        </ul>
+    </header>
 
-        <div th:if="${#fields.hasErrors('name')}" class="error-message">
-            <p th:errors="*{name}" style="color: red;"></p>
-        </div>
-        <div th:if="${#fields.hasErrors('email')}" class="error-message">
-            <p th:errors="*{email}" style="color: red;"></p>
-        </div>
-        <div th:if="${#fields.hasErrors('password')}" class="error-message">
-            <p th:errors="*{password}" style="color: red;"></p>
-        </div>
+    <div class="auth-container">
+        <div class="auth-form registration-form">
+            <h2 class="auth-form-title">Тіркелу</h2>
+            <form th:action="@{/register}" method="POST" th:object="${registrationRequest}">
+                <div class="form-group">
+                    <label for="name">Аты</label>
+                    <input type="text" id="name" th:field="*{name}" placeholder="Атыңызды енгізіңіз" required>
+                    <div th:if="${#fields.hasErrors('name')}" class="error-message">
+                        <p th:errors="*{name}"></p>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Электрондық пошта</label>
+                    <input type="email" id="email" th:field="*{email}" placeholder="Email енгізіңіз" required>
+                    <div th:if="${#fields.hasErrors('email')}" class="error-message">
+                        <p th:errors="*{email}"></p>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Құпия сөз</label>
+                    <input type="password" id="password" th:field="*{password}" placeholder="Құпия сөзді енгізіңіз" required>
+                    <div th:if="${#fields.hasErrors('password')}" class="error-message">
+                        <p th:errors="*{password}"></p>
+                    </div>
+                </div>
 
-        <div th:if="${error}" class="error-message">
-            <p th:text="${error}" style="color: red;"></p>
-        </div>
+                <div th:if="${error}" class="error-message">
+                    <p th:text="${error}"></p>
+                </div>
 
-        <button type="submit" class="register-btn">Тіркелу</button>
-    </form>
-    <p class="note">
-        Есептік жазбаңыз бар ма?
-        <a th:href="@{/login}">Жүйеге кіру</a>
-    </p>
-</div>
+                <button type="submit" class="auth-button">
+                    <i class="fas fa-user-plus"></i> Тіркелу
+                </button>
+            </form>
+            
+            <p class="auth-note">
+                Есептік жазбаңыз бар ма?
+                <a th:href="@{/login}">Жүйеге кіру</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Контактілер</h4>
+                <p><i class="fas fa-phone"></i> Телефон нөмірі: +7 (123) 456-78-90</p>
+                <p><i class="fas fa-envelope"></i> Email: info@medbot.kz</p>
+            </div>
+            <div class="footer-column">
+                <h4>Біз жайлы</h4>
+                <p>MedBot - медициналық ақпарат пен кеңес беру платформасы.</p>
+                <p>© 2025 MedBot. Барлық құқықтар қорғалған.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Әлеуметтік желілер</h4>
+                <p class="social-link">
+                    <a href="#" class="social-item">
+                        <img th:src="@{/images/instagram.webp}" alt="Instagram" class="social-img">
+                        Instagram
+                    </a>
+                </p>
+                <p class="social-link">
+                    <a href="#" class="social-item">
+                        <img th:src="@{/images/Facebook.png}" alt="Facebook" class="social-img">
+                        Facebook
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script th:src="@{/scripts/script.js}"></script>
 </body>
 </html>

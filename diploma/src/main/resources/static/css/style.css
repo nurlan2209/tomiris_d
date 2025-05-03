@@ -1,519 +1,727 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Lobster&display=swap');
+/* Enhanced CSS for Medical Website - Main Styles */
 
-*{
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap');
+
+/* Reset and base styles */
+* {
     margin: 0;
     padding: 0;
-}
-.menu{
-    display: block;
-    margin: auto;
-    width: 100%;
-    text-align: center;
-    
-}
-.logo{
-    width: 64px;
-    height: 64px;
-}
-.menu-list{
-    width: 100%;
-    list-style-type: none;
-    color: #ffff;
-    font-family: "Lobster", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 20px;
+    box-sizing: border-box;
 }
 
-
-
-
-/* .menu-item-logo{
-    float: left;
-} */
-
-
-
-.menu-item{
-    float: left;
-    width: 20%;
-    transition: 1s;
-    margin: auto;
-    
-}
-
-
-
-.menu-item a{
-    text-decoration: none;
-    color: #f0f8ff;
-}
-
-.menu-item a:hover{
-    color: #008c9e;
-    font-size: 22px;
+:root {
+    --primary-color: #0094c8;
+    --secondary-color: #79c8db;
+    --accent-color: #e3f4f7;
+    --text-dark: #333333;
+    --text-medium: #555555;
+    --text-light: #ffffff;
+    --background-light: #f5f8fa;
+    --background-white: #ffffff;
+    --shadow-light: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 6px 12px rgba(0, 0, 0, 0.15);
+    --transition-default: all 0.3s ease;
+    --border-radius-small: 6px;
+    --border-radius-medium: 10px;
+    --border-radius-large: 20px;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-.image-container img {
-    position: absolute;
-    left: 2px;
-    width: 50px; /* Уменьшаем ширину картинки */
-    height: auto; /* Пропорциональная высота */
-    cursor: pointer;
-    top: 300px;
-    transition: left 1s ease; /* Плавное движение */
-}
-
-.hidden-block {
-    display: none; /* Блок скрыт по умолчанию */
-    position: absolute;
-    top: 5px;
-    left: -300px; /* Изначально скрыт за левым краем */
-    width: 300px;
-    height: 900px;
-    padding: 10px;
-    background-color: #00bcd4; /* Установлен цвет */
-    color: white;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: left 1s ease; /* Плавное движение */
-    opacity: 0.8; /* Уровень прозрачности (от 0 до 1) */
-}
-
-.hover-text {
-    display: block;
-    color: white; /* Белый текст по умолчанию */
-    cursor: pointer; /* Указывает, что элемент интерактивный */
-    transition: color 0.3s ease; /* Плавный переход цвета текста */
-    text-decoration: none;
-}
-
-.hover-text:hover {
-    color: yellow; /* Цвет текста при наведении мыши */
-}
-
-
-.banner{
-    height: 100vh;
-    width: 100%;
-    background-image: url('../images/banner.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    text-align: center;
-
-}
-
-.medicines{
-}
-/* 
-.medicine-image{
-    width: 100px;
-    height: 50px;
-} */
-
-
-
-.diseases {
-    height: 100vh;
-    background-color: #f0f8ff; /* Мягкий светло-голубой фон */
-    padding: 20px;
-    text-align: center;
-}
-.welcome-link{
-    display: block;
-    margin: auto;
-    width: 50%;
-}
-
-.welcome-link-img:hover{
-    width: 120px;
-    opacity: 1;
-}
-
-
-
-.diseases{
-    text-align: center;
-}
-.diease {
-    display: inline-block;
-    width: 28%;
-    height: 600px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для карточек */
-    margin: 15px;
-
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.diease:hover {
-    transform: scale(1.05); /* Увеличение при наведении */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Глубокая тень при наведении */
-}
-.dieases-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover; /* Адаптация изображения по размеру */
-    border-bottom: 2px solid #00bcd4; /* Разделительная линия */
-}
-.dieases-name {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333333;
-    margin: 15px 0 10px 0;
-}
-
-.dieases-dec {
-    font-size: 1rem;
-    color: #666666;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--background-light);
     line-height: 1.6;
-    padding: 0 15px;
-    text-align: justify;
-    height: 40%;
 }
 
-.dieases-link {
-    display: inline-block;
-    margin: 15px 0 20px 0;
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
+
+a {
     text-decoration: none;
-    background-color: #00bcd4; /* Цвет кнопки */
-    color: #ffffff;
-    font-size: 1rem;
-    padding: 10px 20px;
-    border-radius: 20px;
-    transition: background-color 0.3s, transform 0.3s;
+    color: var(--primary-color);
+    transition: var(--transition-default);
 }
 
-.dieases-link:hover {
-    background-color: #008c9e; /* Темнее при наведении */
-    transform: translateY(-3px); /* Легкий подъем при наведении */
-}
-body {
- 
-    font-family: Arial, sans-serif;
+img {
+    max-width: 100%;
+    height: auto;
 }
 
+/* Navigation and header */
+.menu {
+    background-color: var(--primary-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-light);
+}
 
-.banner-details {
-    height: 70vh;
+.menu-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.menu-item {
+    margin: 0 1.5rem;
+    position: relative;
+}
+
+.menu-item a {
+    color: var(--text-light);
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.menu-item a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--text-light);
+    transition: var(--transition-default);
+}
+
+.menu-item a:hover::after {
     width: 100%;
-    background-image: url('../images/robot.webp');
-    background-repeat: no-repeat;
-    background-size: 100% 500px;
-    background-position: top;
 }
+
+.logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    transition: var(--transition-default);
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* Banner */
+.banner {
+    height: 70vh;
+    background-image: url('../images/banner.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+}
+
+.banner-content {
+    text-align: center;
+    color: var(--text-light);
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.banner-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.banner-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Medicine carousel */
+.medicines {
+    padding: 3rem 0;
+    background-color: var(--background-white);
+}
+
 .carousel-container {
     width: 100%;
     overflow: hidden;
     position: relative;
-    top: 20px;
-  }
-  
-  .carousel {
+    padding: 1rem 0;
+}
+
+.carousel {
     display: flex;
     animation: scroll 30s linear infinite;
-  }
-  
-  .carousel-item {
+}
+
+.carousel-item {
     flex: 0 0 auto;
     text-align: center;
-  }
-  
-  .medicine-image {
-    width: 150px;
-    height: 150px;
-    margin: 0 10px;
-  }
-  
-  /* Анимация для бесшовного скролла */
-  @keyframes scroll {
+    margin: 0 20px;
+    transition: var(--transition-default);
+}
+
+.carousel-item:hover {
+    transform: translateY(-5px);
+}
+
+.medicine-image {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: var(--border-radius-small);
+    box-shadow: var(--shadow-light);
+    background-color: var(--accent-color);
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: var(--transition-default);
+}
+
+.carousel-item:hover .medicine-image {
+    box-shadow: var(--shadow-medium);
+}
+
+.carousel-item h3 {
+    font-size: 1rem;
+    color: var(--text-medium);
+    margin-top: 10px;
+}
+
+@keyframes scroll {
     0% {
-      transform: translateX(0);
+        transform: translateX(0);
     }
     100% {
-      transform: translateX(-100%);
+        transform: translateX(calc(-200px * 7)); /* Adjust based on item width */
     }
-  }
+}
 
-  .disease-content {
+/* Diseases section */
+.diseases {
+    padding: 4rem 0;
+    text-align: center;
+    background-color: var(--background-light);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: var(--secondary-color);
+}
+
+.disease-container {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 20px; /* Отступ между колонками */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
-.column {
-    flex: 1; /* Равномерное распределение ширины колонок */
-}
-
-.column img {
-    max-width: 100%; /* Изображение подстраивается под размер колонки */
-    height: auto; /* Сохранение пропорций изображения */
-}
-
-
-.footer {
-    margin-top: 20px;
-    background-color: #f8f8f8;
-    padding: 20px 0;
+.diease {
+    width: 350px;
+    height: 500px;
+    background-color: var(--background-white);
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-default);
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    border-top: 500px solid #ddd;
-    width: 100%;
-    height: 20vh;
+    flex-direction: column;
+}
 
+.diease:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-medium);
+}
+
+.dieases-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: var(--transition-default);
+}
+
+.diease:hover .dieases-img {
+    transform: scale(1.05);
+}
+
+.disease-content {
+    padding: 20px;
+    text-align: left;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.dieases-name {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.dieases-dec {
+    font-size: 1rem;
+    color: var(--text-medium);
+    flex-grow: 1;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.dieases-link {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: var(--transition-default);
+    align-self: center;
+}
+
+.dieases-link:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 3rem 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .footer-column {
-    flex: 1;
-    max-width: 300px;
-    margin: 0 15px;
+    flex: 1 1 300px;
+    margin-bottom: 2rem;
 }
 
 .footer-column h4 {
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: #333;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.footer-column h4::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--accent-color);
 }
 
 .footer-column p {
-    margin: 5px 0;
-    color: #555;
-    font-size: 14px;
+    margin-bottom: 0.8rem;
 }
 
-.footer-column a {
-    text-decoration: none;
-    color: #007BFF;
-}
-
-.footer-column a:hover {
-    text-decoration: underline;
-}
 .social-link {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .social-item {
-    text-decoration: none;
-    font-size: 16px;
-    color: #000;
     display: flex;
     align-items: center;
+    color: var(--text-light);
+    transition: var(--transition-default);
 }
 
 .social-item:hover {
-    color: #007bff; /* Пример изменения цвета при наведении */
+    color: var(--accent-color);
+    transform: translateX(5px);
 }
 
 .social-img {
-    width: 40px;
+    width: 30px;
     height: 30px;
-    margin-right: 8px; /* Отступ между картинкой и текстом */
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
 }
-/* Стили для нового блока */
-/* Стили для нового блока */
-.content-section {
+
+/* Detail pages */
+.banner-details {
+    height: 40vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/robot.webp');
+    background-size: cover;
+    background-position: center;
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    margin-top: 50px; /* Отступ сверху */
-    animation: fadeIn 1.5s ease-in-out; /* Анимация появления */
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
-.content-left {
-    flex: 1;
-    padding-right: 20px;
-    animation: slideInLeft 1.5s ease-out; /* Анимация для изображения */
-}
-
-.content-right {
-    flex: 2;
-    animation: slideInRight 1.5s ease-out; /* Анимация для текста */
-}
-
-.content-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-top: 20px; /* Отступ сверху */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень для изображения */
-    transition: transform 0.3s ease; /* Эффект при наведении */
-}
-.content-right p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #444444;
-    text-align: justify;
-    background-color: #f9f9f9; /* Светлый фон */
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень для текста */
-}
-
-/* Анимации */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideInLeft {
-    from {
-        transform: translateX(-50%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        transform: translateX(50%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-/* Общие стили */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-}
-
-/* Шапка */
-.banner {
-    background-color: #0078d7;
-    padding: 15px 0;
-    color: #fff;
+.page-title {
+    color: var(--text-light);
+    font-size: 2.5rem;
     text-align: center;
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.menu {
+.disease-content {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+    gap: 30px;
+}
+
+.disease-content .column {
+    flex: 1 1 45%;
+    min-width: 300px;
+}
+
+.disease-content .column img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-light);
+}
+
+.disease-text {
+    padding: 1.5rem;
+    background-color: var(--background-white);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-light);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* Sidebar navigation */
+.image-container {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+}
+
+.image-container img {
+    width: 40px;
+    height: auto;
+    background-color: var(--primary-color);
+    padding: 8px;
+    border-radius: 0 5px 5px 0;
+    box-shadow: var(--shadow-light);
+    cursor: pointer;
+    transition: var(--transition-default);
+}
+
+.image-container img:hover {
+    background-color: var(--secondary-color);
+}
+
+.hidden-block {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -300px;
+    width: 250px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 1.5rem;
+    border-radius: 0 10px 10px 0;
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition-default);
+    z-index: 99;
+    display: none;
+}
+
+.hover-text {
+    display: block;
+    color: var(--text-light);
+    padding: 10px 0;
+    font-size: 1.1rem;
+    transition: var(--transition-default);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hover-text:hover {
+    color: var(--accent-color);
+    transform: translateX(10px);
+}
+
+/* Login and registration forms */
+.auth-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 2rem;
 }
 
-.menu-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+.registration-form, .login-form {
+    background-color: var(--background-white);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-medium);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 500px;
+    transition: var(--transition-default);
 }
 
-.menu-item {
-    margin: 0 15px;
+.registration-form:hover, .login-form:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-.menu-item a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* Личный кабинет */
-.personal-account {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.account-header h2 {
+.auth-form h2 {
     text-align: center;
-    color: #333;
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 2rem;
 }
 
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-medium);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-small);
+    font-size: 1rem;
+    transition: var(--transition-default);
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 148, 200, 0.2);
+    outline: none;
+}
+
+.error-message {
+    color: #d32f2f;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.auth-button {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    padding: 12px;
+    border-radius: var(--border-radius-small);
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-default);
+}
+
+.auth-button:hover {
+    background-color: var(--secondary-color);
+}
+
+.auth-note {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-medium);
+    font-size: 0.9rem;
+}
+
+.auth-note a {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.auth-note a:hover {
+    text-decoration: underline;
+}
+
+/* Chat interface */
 .chat-section {
-    margin-top: 20px;
+    margin-top: 2rem;
 }
 
-/* Окно чата */
 .chat-window {
-    max-height: 400px;
+    height: 400px;
     overflow-y: auto;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-medium);
+    padding: 1rem;
+    background-color: var(--background-light);
+    margin-bottom: 1rem;
 }
 
 .chat-messages {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 1rem;
 }
 
 .chat-message {
     display: flex;
     flex-direction: column;
+    max-width: 80%;
 }
 
 .user-message {
     align-self: flex-end;
-    background-color: #d1e7dd;
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 70%;
-    text-align: left;
-    word-wrap: break-word;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 12px 15px;
+    border-radius: 15px 15px 0 15px;
+    box-shadow: var(--shadow-light);
 }
 
 .bot-message {
     align-self: flex-start;
-    background-color: #f8d7da;
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 70%;
-    text-align: left;
-    word-wrap: break-word;
+    background-color: var(--background-white);
+    padding: 12px 15px;
+    border-radius: 15px 15px 15px 0;
+    box-shadow: var(--shadow-light);
 }
 
-/* Форма отправки сообщения */
 .chat-form {
     display: flex;
-    margin-top: 10px;
+    gap: 10px;
 }
 
 .chat-form input[type="text"] {
     flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
-    font-size: 14px;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    font-size: 1rem;
+}
+
+.chat-form input[type="text"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 148, 200, 0.2);
+    outline: none;
 }
 
 .chat-form button {
-    background-color: #0078d7;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--text-light);
     border: none;
-    padding: 10px 20px;
-    border-radius: 0 4px 4px 0;
+    padding: 0 20px;
+    border-radius: 25px;
+    font-size: 1rem;
     cursor: pointer;
-    font-size: 14px;
+    transition: var(--transition-default);
 }
 
 .chat-form button:hover {
-    background-color: #005bb5;
+    background-color: var(--secondary-color);
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+    .menu-item {
+        margin: 0 1rem;
+    }
+    
+    .banner-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .disease-container {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-list {
+        flex-wrap: wrap;
+    }
+    
+    .menu-item {
+        margin: 0.5rem;
+    }
+    
+    .banner {
+        height: 50vh;
+    }
+    
+    .banner-content h1 {
+        font-size: 2rem;
+    }
+    
+    .medicine-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .carousel-item h3 {
+        font-size: 0.9rem;
+    }
+    
+    .diease {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .banner-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .registration-form, .login-form {
+        padding: 1.5rem;
+    }
+    
+    .hidden-block {
+        width: 200px;
+    }
 }

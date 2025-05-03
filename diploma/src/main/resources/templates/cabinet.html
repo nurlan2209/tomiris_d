@@ -3,49 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Личный кабинет</title>
+    <title>MedBot - Жеке кабинет</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/animations.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
-<div class="banner">
-    <div class="menu">
+    <!-- Header Navigation -->
+    <header class="menu">
         <ul class="menu-list">
-            <li class="menu-item"><a th:href="@{/}"><img class="logo" th:src="@{/images/medicine.png}" alt=""></a></li>
+            <li class="menu-item">
+                <a th:href="@{/}">
+                    <img class="logo" th:src="@{/images/medicine.png}" alt="MedBot Logo">
+                </a>
+            </li>
             <li class="menu-item"><a th:href="@{/}">Басты бет</a></li>
             <li class="menu-item"><a th:href="@{/about}">Біз жайлы</a></li>
-            <li class="menu-item"><a th:href="@{/account}">Личный кабинет</a></li>
+            <li class="menu-item"><a th:href="@{/diseases}">Аурулар</a></li>
+            <li class="menu-item"><a th:href="@{/account}">Жеке кабинет</a></li>
+            <li class="menu-item">
+                <a th:href="@{/logout}" class="auth-button-nav logout">
+                    <i class="fas fa-sign-out-alt"></i> Шығу
+                </a>
+            </li>
         </ul>
-    </div>
-</div>
+    </header>
 
-<div class="personal-account">
-    <div class="account-header">
-        <h2>Личный кабинет</h2>
-        <p>Добро пожаловать, <span th:text="${userName}">User</span>!</p>
-    </div>
+    <div class="personal-account">
+        <div class="account-header">
+            <h2>Жеке кабинет</h2>
+            <p>Қош келдіңіз, <span th:text="${userName}" class="user-name">User</span>!</p>
+        </div>
 
-    <div class="chat-section">
-        <h3>Чат с медицинским ботом</h3>
-        <div id="chat-window" class="chat-window">
-            <div class="chat-messages">
-                <div th:each="message : ${messages}" class="chat-message">
-                    <div th:if="${message.role} == 'user'" class="user-message">
-                        <p th:text="${message.content}"></p>
-                    </div>
-                    <div th:if="${message.role} == 'assistant'" class="bot-message">
-                        <p th:text="${message.content}"></p>
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="chat-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div>
+                    <h3 class="chat-title">MedBot көмекшісі</h3>
+                    <p class="chat-subtitle">Медициналық кеңесші</p>
+                </div>
+            </div>
+
+            <div id="chat-window" class="chat-window">
+                <div class="chat-messages">
+                    <div th:each="message : ${messages}" class="chat-message">
+                        <div th:if="${message.role} == 'user'" class="user-message">
+                            <p th:text="${message.content}"></p>
+                        </div>
+                        <div th:if="${message.role} == 'assistant'" class="bot-message">
+                            <p th:text="${message.content}"></p>
+                        </div>
                     </div>
                 </div>
             </div>
+            
+            <form th:action="@{/ask-question}" method="post" class="chat-form">
+                <input type="text" name="question" placeholder="Сұрағыңызды енгізіңіз..." required>
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i> Жіберу
+                </button>
+            </form>
         </div>
-        <form th:action="@{/ask-question}" method="post" class="chat-form">
-            <input type="text" name="question" placeholder="Введите ваш вопрос..." required>
-            <button type="submit">Отправить</button>
-        </form>
-    </div>
-</div>
 
-<script th:src="@{/scripts/script.js}"></script>
+        <div class="health-tips">
+            <h3><i class="fas fa-heartbeat"></i> Денсаулық кеңестері</h3>
+            <div class="tips-container">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h4>Дұрыс тамақтану</h4>
+                    <p>Күнделікті дәрумендерге бай тамақтарды пайдаланыңыз.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h4>Белсенді өмір</h4>
+                    <p>Күнделікті кем дегенде 30 минут физикалық жаттығулар жасаңыз.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <h4>Жақсы ұйқы</h4>
+                    <p>Күніне 7-8 сағат толық ұйықтаңыз.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Контактілер</h4>
+                <p><i class="fas fa-phone"></i> Телефон нөмірі: +7 (123) 456-78-90</p>
+                <p><i class="fas fa-envelope"></i> Email: info@medbot.kz</p>
+            </div>
+            <div class="footer-column">
+                <h4>Біз жайлы</h4>
+                <p>MedBot - медициналық ақпарат пен кеңес беру платформасы.</p>
+                <p>© 2025 MedBot. Барлық құқықтар қорғалған.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Әлеуметтік желілер</h4>
+                <p class="social-link">
+                    <a href="#" class="social-item">
+                        <img th:src="@{/images/instagram.webp}" alt="Instagram" class="social-img">
+                        Instagram
+                    </a>
+                </p>
+                <p class="social-link">
+                    <a href="#" class="social-item">
+                        <img th:src="@{/images/Facebook.png}" alt="Facebook" class="social-img">
+                        Facebook
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script th:src="@{/scripts/script.js}"></script>
+    <script>
+        // Автоматическая прокрутка чата вниз
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatWindow = document.getElementById('chat-window');
+            if (chatWindow) {
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }
+        });
+    </script>
 </body>
 </html>
