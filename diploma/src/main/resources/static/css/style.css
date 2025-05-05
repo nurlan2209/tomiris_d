@@ -1,30 +1,45 @@
-/* Enhanced CSS for Medical Website - Main Styles */
+/* Улучшенный CSS для медицинского сайта MedBot */
 
-/* Import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap');
+/* Импорт шрифтов */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
 
-/* Reset and base styles */
+/* Переменные CSS для упрощения поддержки и согласованности дизайна */
+:root {
+    --primary-color: #1a75ce;  /* Основной цвет - медицинский синий */
+    --secondary-color: #38b6ff; /* Вторичный цвет */
+    --accent-color: #e3f4ff;  /* Цвет акцента */
+    --dark-accent: #004a81; /* Тёмный акцент */
+    --success-color: #4caf50; /* Цвет успеха */
+    --warning-color: #ff9800; /* Цвет предупреждения */
+    --danger-color: #f44336; /* Цвет опасности */
+    --text-dark: #2c3e50;  /* Тёмный текст */
+    --text-medium: #546e7a; /* Средний текст */
+    --text-light: #ffffff;  /* Светлый текст */
+    --background-light: #f5f9fc; /* Светлый фон */
+    --background-white: #ffffff; /* Белый фон */
+    
+    /* Тени */
+    --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 5px 15px rgba(0, 0, 0, 0.15);
+    --shadow-large: 0 10px 25px rgba(0, 0, 0, 0.2);
+    
+    /* Закругления */
+    --border-radius-small: 6px;
+    --border-radius-medium: 12px;
+    --border-radius-large: 24px;
+    --border-radius-circle: 50%;
+    
+    /* Переходы */
+    --transition-fast: all 0.2s ease;
+    --transition-default: all 0.3s ease;
+    --transition-slow: all 0.5s ease;
+}
+
+/* Базовые стили */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-:root {
-    --primary-color: #0094c8;
-    --secondary-color: #79c8db;
-    --accent-color: #e3f4f7;
-    --text-dark: #333333;
-    --text-medium: #555555;
-    --text-light: #ffffff;
-    --background-light: #f5f8fa;
-    --background-white: #ffffff;
-    --shadow-light: 0 4px 8px rgba(0, 0, 0, 0.1);
-    --shadow-medium: 0 6px 12px rgba(0, 0, 0, 0.15);
-    --transition-default: all 0.3s ease;
-    --border-radius-small: 6px;
-    --border-radius-medium: 10px;
-    --border-radius-large: 20px;
 }
 
 body {
@@ -32,12 +47,14 @@ body {
     color: var(--text-dark);
     background-color: var(--background-light);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.8em;
+    color: var(--text-dark);
 }
 
 a {
@@ -46,24 +63,60 @@ a {
     transition: var(--transition-default);
 }
 
+a:hover {
+    color: var(--secondary-color);
+}
+
 img {
     max-width: 100%;
     height: auto;
+    object-fit: cover;
 }
 
-/* Navigation and header */
+button, .button {
+    cursor: pointer;
+    border: none;
+    border-radius: var(--border-radius-small);
+    padding: 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    transition: var(--transition-default);
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+button:hover, .button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+button:active, .button:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-light);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Улучшенное навигационное меню */
 .menu {
     background-color: var(--primary-color);
-    padding: 1rem 0;
+    padding: 0.8rem 0;
     position: sticky;
     top: 0;
-    z-index: 100;
-    box-shadow: var(--shadow-light);
+    z-index: 1000;
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition-default);
 }
 
 .menu-list {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     list-style-type: none;
     max-width: 1200px;
@@ -72,55 +125,82 @@ img {
 }
 
 .menu-item {
-    margin: 0 1.5rem;
+    margin: 0 0.5rem;
     position: relative;
 }
 
 .menu-item a {
-    color: red;
+    color: var(--text-light);
     font-weight: 500;
-    font-size: 1.1rem;
-    padding: 0.5rem 0;
-    position: relative;
-}
-
-.menu-item a::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--text-light);
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: var(--border-radius-small);
     transition: var(--transition-default);
+    display: flex;
+    align-items: center;
 }
 
-.menu-item a:hover::after {
-    width: 100%;
+.menu-item a i {
+    margin-right: 6px;
+}
+
+.menu-item a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.menu-item.active a {
+    background-color: var(--dark-accent);
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
     transition: var(--transition-default);
+    margin-right: 10px;
 }
 
 .logo:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(5deg);
 }
 
-/* Banner */
+.auth-button-nav {
+    background-color: var(--text-light);
+    color: var(--primary-color) !important;
+    padding: 0.6rem 1.2rem !important;
+    border-radius: var(--border-radius-medium);
+    transition: var(--transition-default);
+    font-weight: 600 !important;
+}
+
+.auth-button-nav:hover {
+    background-color: var(--accent-color);
+    box-shadow: var(--shadow-light);
+    transform: translateY(-2px);
+}
+
+.auth-button-nav.logout {
+    background-color: var(--dark-accent);
+    color: var(--text-light) !important;
+}
+
+.auth-button-nav.logout:hover {
+    background-color: var(--danger-color);
+}
+
+/* Улучшенный баннер */
 .banner {
-    height: 70vh;
-    background-image: url('../images/banner.png');
+    height: 75vh;
+    min-height: 500px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/banner.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow: hidden;
 }
 
 .banner::before {
@@ -130,101 +210,81 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+    background: linear-gradient(135deg, rgba(26, 117, 206, 0.7), rgba(56, 182, 255, 0.7));
+    z-index: 1;
 }
 
 .banner-content {
     text-align: center;
     color: var(--text-light);
     position: relative;
-    z-index: 1;
+    z-index: 2;
     max-width: 800px;
     padding: 2rem;
+    animation: fadeInUp 1s ease-out;
 }
 
 .banner-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: var(--text-light);
 }
 
 .banner-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* Medicine carousel */
-.medicines {
-    padding: 3rem 0;
-    background-color: var(--background-white);
-}
-
-.carousel-container {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    padding: 1rem 0;
-}
-
-.carousel {
-    display: flex;
-    animation: scroll 30s linear infinite;
-}
-
-.carousel-item {
-    flex: 0 0 auto;
-    text-align: center;
-    margin: 0 20px;
-    transition: var(--transition-default);
-}
-
-.carousel-item:hover {
-    transform: translateY(-5px);
-}
-
-.medicine-image {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-    border-radius: var(--border-radius-small);
-    box-shadow: var(--shadow-light);
-    background-color: var(--accent-color);
-    padding: 10px;
-    margin-bottom: 10px;
-    transition: var(--transition-default);
-}
-
-.carousel-item:hover .medicine-image {
+.banner-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--text-light);
+    color: var(--primary-color);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius-medium);
+    font-weight: 600;
+    font-size: 1.1rem;
     box-shadow: var(--shadow-medium);
+    transition: var(--transition-default);
 }
 
-.carousel-item h3 {
-    font-size: 1rem;
-    color: var(--text-medium);
-    margin-top: 10px;
+.banner-button:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-large);
 }
 
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-200px * 7)); /* Adjust based on item width */
-    }
+.banner-button i {
+    margin-left: 10px;
+    transition: var(--transition-default);
 }
 
-/* Diseases section */
-.diseases {
-    padding: 4rem 0;
+.banner-button:hover i {
+    transform: translateX(5px);
+}
+
+.banner-wave {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+/* Секция заголовка */
+.section-header {
     text-align: center;
-    background-color: var(--background-light);
+    margin-bottom: 3rem;
+    position: relative;
 }
 
 .section-title {
     font-size: 2.5rem;
     color: var(--primary-color);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     position: relative;
     display: inline-block;
 }
@@ -235,9 +295,118 @@ img {
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
-    background-color: var(--secondary-color);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    max-width: 700px;
+    margin: 1rem auto 0;
+}
+
+/* Улучшенный карусель лекарств */
+.medicines {
+    padding: 5rem 0;
+    background-color: var(--background-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.medicines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--accent-color) 0%, rgba(255, 255, 255, 0) 70%);
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 2rem 0;
+    margin-top: 1rem;
+}
+
+.carousel {
+    display: flex;
+    transition: var(--transition-slow);
+    animation: scroll 30s linear infinite;
+}
+
+.carousel:hover {
+    animation-play-state: paused;
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+    text-align: center;
+    margin: 0 30px;
+    transition: var(--transition-default);
+    width: 160px;
+}
+
+.carousel-item:hover {
+    transform: translateY(-8px);
+}
+
+.medicine-image {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-light);
+    background-color: var(--accent-color);
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: var(--transition-default);
+}
+
+.carousel-item:hover .medicine-image {
+    box-shadow: var(--shadow-medium);
+    transform: scale(1.05);
+}
+
+.carousel-item h3 {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-top: 12px;
+    font-weight: 600;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-190px * 7)); /* Adjust based on item width + margin */
+    }
+}
+
+/* Улучшенная секция заболеваний */
+.diseases {
+    padding: 5rem 0;
+    background-color: var(--background-light);
+    position: relative;
+}
+
+.diseases::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.8), transparent);
+    z-index: 1;
 }
 
 .disease-container {
@@ -248,11 +417,13 @@ img {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+    position: relative;
+    z-index: 2;
 }
 
 .diease {
     width: 350px;
-    height: 500px;
+    height: 520px;
     background-color: var(--background-white);
     border-radius: var(--border-radius-medium);
     overflow: hidden;
@@ -260,16 +431,17 @@ img {
     transition: var(--transition-default);
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .diease:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-medium);
+    transform: translateY(-15px);
+    box-shadow: var(--shadow-large);
 }
 
 .dieases-img {
     width: 100%;
-    height: 200px;
+    height: 220px;
     object-fit: cover;
     transition: var(--transition-default);
 }
@@ -279,50 +451,156 @@ img {
 }
 
 .disease-content {
-    padding: 20px;
+    padding: 25px;
     text-align: left;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(to bottom, var(--background-white) 80%, rgba(230, 244, 255, 0.5));
 }
 
 .dieases-name {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: var(--primary-color);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.dieases-name::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    border-radius: 1.5px;
 }
 
 .dieases-dec {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: var(--text-medium);
     flex-grow: 1;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
     overflow: hidden;
+    line-height: 1.7;
+}
+
+.disease-stats {
+    display: flex;
+    margin: 15px 0;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.stat {
+    flex: 1;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    margin-top: 5px;
 }
 
 .dieases-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     background-color: var(--primary-color);
     color: var(--text-light);
-    padding: 10px 25px;
+    padding: 12px 25px;
     border-radius: 50px;
-    font-weight: 500;
+    font-weight: 600;
     transition: var(--transition-default);
     align-self: center;
+    margin-top: auto;
 }
 
 .dieases-link:hover {
     background-color: var(--secondary-color);
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
 }
 
-/* Footer */
+.dieases-link i {
+    margin-right: 8px;
+}
+
+.disease-tag {
+    position: absolute;
+    top: 15px;
+    right: -45px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 6px 50px;
+    transform: rotate(45deg);
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+}
+
+.view-all-container {
+    text-align: center;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.view-all-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius-medium);
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition-default);
+}
+
+.view-all-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-large);
+}
+
+.view-all-button i {
+    margin-left: 10px;
+    transition: var(--transition-default);
+}
+
+.view-all-button:hover i {
+    transform: translateX(5px);
+}
+
+/* Улучшенный футер */
 .footer {
     background-color: var(--primary-color);
     color: var(--text-light);
-    padding: 3rem 0;
+    padding: 4rem 0 2rem;
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
 }
 
 .footer-content {
@@ -337,26 +615,36 @@ img {
 .footer-column {
     flex: 1 1 300px;
     margin-bottom: 2rem;
+    padding-right: 20px;
 }
 
 .footer-column h4 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin-bottom: 1.5rem;
     position: relative;
+    color: var(--text-light);
 }
 
 .footer-column h4::after {
     content: '';
     position: absolute;
-    bottom: -8px;
+    bottom: -10px;
     left: 0;
     width: 40px;
-    height: 2px;
+    height: 3px;
     background-color: var(--accent-color);
+    border-radius: 1.5px;
 }
 
 .footer-column p {
     margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.footer-column p i {
+    margin-right: 10px;
+    color: var(--accent-color);
 }
 
 .social-link {
@@ -368,6 +656,7 @@ img {
     align-items: center;
     color: var(--text-light);
     transition: var(--transition-default);
+    padding: 8px 0;
 }
 
 .social-item:hover {
@@ -380,13 +669,452 @@ img {
     height: 30px;
     object-fit: cover;
     border-radius: 50%;
+    margin-right: 15px;
+    border: 2px solid var(--accent-color);
+    transition: var(--transition-default);
+}
+
+.social-item:hover .social-img {
+    border-color: var(--text-light);
+    transform: scale(1.1);
+}
+
+/* Улучшенная форма аутентификации */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 3rem 2rem;
+}
+
+.auth-form {
+    background-color: var(--background-white);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-large);
+    padding: 3rem;
+    width: 100%;
+    max-width: 500px;
+    transition: var(--transition-default);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.auth-form:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.auth-form-title {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.auth-form-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+.form-group {
+    margin-bottom: 1.8rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-small);
+    font-size: 1rem;
+    transition: var(--transition-default);
+    background-color: rgba(239, 246, 255, 0.3);
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 117, 206, 0.15);
+    outline: none;
+    background-color: #fff;
+}
+
+.error-message {
+    color: var(--danger-color);
+    font-size: 0.9rem;
+    margin-top: 5px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.error-message::before {
+    content: '⚠ ';
+    margin-right: 5px;
+}
+
+.auth-button {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    padding: 14px;
+    border-radius: var(--border-radius-medium);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-default);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.auth-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.auth-button i {
     margin-right: 10px;
 }
 
-/* Detail pages */
+.auth-note {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--text-medium);
+    font-size: 1rem;
+}
+
+.auth-note a {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.auth-note a:hover {
+    text-decoration: underline;
+}
+
+/* Улучшенный личный кабинет и чат */
+.personal-account {
+    padding: 3rem 0;
+    background-color: var(--background-light);
+}
+
+.account-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.account-header h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.account-header p {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+}
+
+.user-name {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.chat-container {
+    background-color: var(--background-white);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-medium);
+    padding: 2rem;
+    margin: 0 auto 3rem;
+    max-width: 900px;
+    transition: var(--transition-default);
+}
+
+.chat-container:hover {
+    box-shadow: var(--shadow-large);
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.chat-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    color: white;
+    font-size: 1.8rem;
+    box-shadow: var(--shadow-light);
+}
+
+.chat-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.chat-subtitle {
+    font-size: 1rem;
+    color: var(--text-medium);
+}
+
+.chat-window {
+    height: 450px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius-medium);
+    padding: 1.5rem;
+    background-color: var(--background-light);
+    margin-bottom: 1.5rem;
+    scroll-behavior: smooth;
+}
+
+.chat-window::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-window::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+.chat-window::-webkit-scrollbar-thumb {
+    background-color: rgba(26, 117, 206, 0.3);
+    border-radius: 4px;
+}
+
+.chat-window::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(26, 117, 206, 0.5);
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.chat-message {
+    display: flex;
+    flex-direction: column;
+    max-width: 85%;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.user-message {
+    align-self: flex-end;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-light);
+    padding: 15px 20px;
+    border-radius: 18px 18px 0 18px;
+    box-shadow: var(--shadow-light);
+    position: relative;
+}
+
+.user-message::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -10px;
+    width: 15px;
+    height: 15px;
+    background: var(--secondary-color);
+    border-bottom-left-radius: 15px;
+    clip-path: polygon(0 0, 0% 100%, 100% 100%);
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: var(--background-white);
+    padding: 15px 20px;
+    border-radius: 18px 18px 18px 0;
+    box-shadow: var(--shadow-light);
+    border-left: 4px solid var(--primary-color);
+    position: relative;
+}
+
+.bot-message::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    width: 15px;
+    height: 15px;
+    background: var(--background-white);
+    border-bottom-right-radius: 15px;
+    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+}
+
+.chat-form {
+    display: flex;
+    gap: 15px;
+}
+
+.chat-form input[type="text"] {
+    flex: 1;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    font-size: 1rem;
+    background-color: var(--background-light);
+    transition: var(--transition-default);
+}
+
+.chat-form input[type="text"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 117, 206, 0.15);
+    outline: none;
+    background-color: #fff;
+}
+
+.chat-form button {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    padding: 0 25px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition-default);
+    display: flex;
+    align-items: center;
+}
+
+.chat-form button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.chat-form button i {
+    margin-right: 8px;
+}
+
+.loading .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin: 0 3px;
+    border-radius: 50%;
+    background-color: var(--text-medium);
+    animation: dotPulse 1.4s infinite ease-in-out;
+}
+
+.loading .dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loading .dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes dotPulse {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0.5; }
+}
+
+/* Улучшенные карточки советов по здоровью */
+.health-tips {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: var(--background-white);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-medium);
+}
+
+.health-tips h3 {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.health-tips h3 i {
+    margin-right: 12px;
+    color: var(--success-color);
+}
+
+.tips-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.tip-card {
+    flex: 1 1 250px;
+    padding: 1.5rem;
+    background-color: var(--background-light);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-default);
+    border-left: 4px solid var(--primary-color);
+}
+
+.tip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.tip-icon {
+    width: 50px;
+    height: 50px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.tip-card h4 {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.tip-card p {
+    color: var(--text-medium);
+    line-height: 1.5;
+}
+
+/* Страница детальной информации о болезнях */
 .banner-details {
     height: 40vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/robot.webp');
+    min-height: 300px;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/robot.webp');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -397,50 +1125,21 @@ img {
 
 .page-title {
     color: var(--text-light);
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     text-align: center;
     position: relative;
     z-index: 1;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.disease-content {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 3rem auto;
-    padding: 0 2rem;
-    gap: 30px;
-}
-
-.disease-content .column {
-    flex: 1 1 45%;
-    min-width: 300px;
-}
-
-.disease-content .column img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--border-radius-medium);
-    box-shadow: var(--shadow-light);
-}
-
-.disease-text {
-    padding: 1.5rem;
-    background-color: var(--background-white);
-    border-radius: var(--border-radius-medium);
-    box-shadow: var(--shadow-light);
-    font-size: 1.1rem;
-    line-height: 1.7;
-}
-
-/* Sidebar navigation */
+/* Улучшенная боковая панель */
 .image-container {
     position: fixed;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
     z-index: 100;
+    transition: var(--transition-default);
 }
 
 .image-container img {
@@ -448,14 +1147,15 @@ img {
     height: auto;
     background-color: var(--primary-color);
     padding: 8px;
-    border-radius: 0 5px 5px 0;
-    box-shadow: var(--shadow-light);
+    border-radius: 0 8px 8px 0;
+    box-shadow: var(--shadow-medium);
     cursor: pointer;
     transition: var(--transition-default);
 }
 
 .image-container img:hover {
     background-color: var(--secondary-color);
+    transform: scale(1.1);
 }
 
 .hidden-block {
@@ -464,11 +1164,11 @@ img {
     transform: translateY(-50%);
     left: -300px;
     width: 250px;
-    background-color: var(--primary-color);
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     color: var(--text-light);
     padding: 1.5rem;
-    border-radius: 0 10px 10px 0;
-    box-shadow: var(--shadow-medium);
+    border-radius: 0 12px 12px 0;
+    box-shadow: var(--shadow-large);
     transition: var(--transition-default);
     z-index: 99;
     display: none;
@@ -477,10 +1177,25 @@ img {
 .hover-text {
     display: block;
     color: var(--text-light);
-    padding: 10px 0;
+    padding: 12px 0;
     font-size: 1.1rem;
     transition: var(--transition-default);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    padding-left: 20px;
+}
+
+.hover-text:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: var(--text-light);
+    border-radius: 50%;
+    transition: var(--transition-default);
 }
 
 .hover-text:hover {
@@ -488,223 +1203,100 @@ img {
     transform: translateX(10px);
 }
 
-/* Login and registration forms */
-.auth-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    padding: 2rem;
+.hover-text:hover:before {
+    background-color: var(--accent-color);
+    width: 8px;
+    height: 8px;
 }
 
-.registration-form, .login-form {
-    background-color: var(--background-white);
-    border-radius: var(--border-radius-large);
-    box-shadow: var(--shadow-medium);
-    padding: 2.5rem;
-    width: 100%;
-    max-width: 500px;
-    transition: var(--transition-default);
+/* Адаптивный дизайн */
+@media (max-width: 1200px) {
+    .banner-content h1 {
+        font-size: 3rem;
+    }
+    
+    .diease {
+        width: 320px;
+    }
 }
 
-.registration-form:hover, .login-form:hover {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-.auth-form h2 {
-    text-align: center;
-    color: var(--primary-color);
-    font-size: 2rem;
-    margin-bottom: 2rem;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-medium);
-}
-
-.form-group input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius-small);
-    font-size: 1rem;
-    transition: var(--transition-default);
-}
-
-.form-group input:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 148, 200, 0.2);
-    outline: none;
-}
-
-.error-message {
-    color: #d32f2f;
-    font-size: 0.9rem;
-    margin-top: 5px;
-}
-
-.auth-button {
-    width: 100%;
-    background-color: var(--primary-color);
-    color: var(--text-light);
-    border: none;
-    padding: 12px;
-    border-radius: var(--border-radius-small);
-    font-size: 1.1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: var(--transition-default);
-}
-
-.auth-button:hover {
-    background-color: var(--secondary-color);
-}
-
-.auth-note {
-    text-align: center;
-    margin-top: 1.5rem;
-    color: var(--text-medium);
-    font-size: 0.9rem;
-}
-
-.auth-note a {
-    color: var(--primary-color);
-    font-weight: 500;
-}
-
-.auth-note a:hover {
-    text-decoration: underline;
-}
-
-/* Chat interface */
-.chat-section {
-    margin-top: 2rem;
-}
-
-.chat-window {
-    height: 400px;
-    overflow-y: auto;
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius-medium);
-    padding: 1rem;
-    background-color: var(--background-light);
-    margin-bottom: 1rem;
-}
-
-.chat-messages {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.chat-message {
-    display: flex;
-    flex-direction: column;
-    max-width: 80%;
-}
-
-.user-message {
-    align-self: flex-end;
-    background-color: var(--primary-color);
-    color: var(--text-light);
-    padding: 12px 15px;
-    border-radius: 15px 15px 0 15px;
-    box-shadow: var(--shadow-light);
-}
-
-.bot-message {
-    align-self: flex-start;
-    background-color: var(--background-white);
-    padding: 12px 15px;
-    border-radius: 15px 15px 15px 0;
-    box-shadow: var(--shadow-light);
-}
-
-.chat-form {
-    display: flex;
-    gap: 10px;
-}
-
-.chat-form input[type="text"] {
-    flex: 1;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    font-size: 1rem;
-}
-
-.chat-form input[type="text"]:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 148, 200, 0.2);
-    outline: none;
-}
-
-.chat-form button {
-    background-color: var(--primary-color);
-    color: var(--text-light);
-    border: none;
-    padding: 0 20px;
-    border-radius: 25px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: var(--transition-default);
-}
-
-.chat-form button:hover {
-    background-color: var(--secondary-color);
-}
-
-/* Responsive design */
 @media (max-width: 992px) {
     .menu-item {
-        margin: 0 1rem;
+        margin: 0 0.3rem;
+    }
+    
+    .menu-item a {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
     }
     
     .banner-content h1 {
         font-size: 2.5rem;
     }
     
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
     .disease-container {
         gap: 20px;
+    }
+    
+    .auth-form {
+        padding: 2rem;
     }
 }
 
 @media (max-width: 768px) {
     .menu-list {
         flex-wrap: wrap;
+        justify-content: center;
     }
     
     .menu-item {
-        margin: 0.5rem;
+        margin: 0.3rem;
     }
     
     .banner {
-        height: 50vh;
+        height: 60vh;
     }
     
     .banner-content h1 {
         font-size: 2rem;
     }
     
-    .medicine-image {
-        width: 100px;
-        height: 100px;
+    .banner-content p {
+        font-size: 1.1rem;
     }
     
-    .carousel-item h3 {
-        font-size: 0.9rem;
+    .medicine-image {
+        width: 120px;
+        height: 120px;
     }
     
     .diease {
         width: 100%;
+        height: auto;
+        min-height: 480px;
+    }
+    
+    .chat-container {
+        padding: 1.5rem;
+    }
+    
+    .chat-avatar {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+    }
+    
+    .chat-title {
+        font-size: 1.4rem;
+    }
+    
+    .footer-column {
+        flex: 0 0 100%;
+        margin-bottom: 2rem;
     }
 }
 
@@ -714,14 +1306,72 @@ img {
     }
     
     .section-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
-    .registration-form, .login-form {
+    .auth-form {
         padding: 1.5rem;
     }
     
     .hidden-block {
         width: 200px;
     }
+    
+    .chat-window {
+        height: 400px;
+        padding: 1rem;
+    }
+    
+    .chat-form {
+        flex-direction: column;
+    }
+    
+    .chat-form button {
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
+    }
+    
+    .tips-container {
+        flex-direction: column;
+    }
 }
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.fade-in { animation: fadeIn 1s ease-out; }
+.fade-in-up { animation: fadeInUp 1s ease-out; }
+.slide-in-left { animation: slideInLeft 1s ease-out; }
+.pulse { animation: pulse 2s infinite; }
