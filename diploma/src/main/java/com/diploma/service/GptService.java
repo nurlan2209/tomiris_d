@@ -39,10 +39,13 @@ public class GptService {
         ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder()
                 .model("gpt-4o-mini")
                 .messages(prependSystemMessage(history))
+                .temperature(0.7)
+                .maxTokens(1000)
                 .build();
 
         try {
-            String response = openAiService.createChatCompletion(chatCompletionRequest).getChoices().get(0).getMessage().getContent();
+            String response = openAiService.createChatCompletion(chatCompletionRequest)
+                    .getChoices().get(0).getMessage().getContent();
             return response;
         } catch (Exception e) {
             System.err.println("Error during OpenAI API call: " + e.getMessage());
@@ -51,7 +54,13 @@ public class GptService {
     }
 
     private List<ChatMessage> prependSystemMessage(List<ChatMessage> history) {
-        ChatMessage systemMessage = new ChatMessage("system", "Ты медицинский бот, ты не можешь отвечать ни на что, кроме медицины, ни в каком случае. В конце постав диагноз");
+        ChatMessage systemMessage = new ChatMessage("system", 
+            "Ты медицинский бот, специализирующийся на диагностике и консультации. " +
+            "Отвечай только на вопросы, связанные с медициной. " +
+            "Всегда указывай, что твои ответы не заменяют консультацию врача. " +
+            "Основывай свои ответы на научных данных. " +
+            "В конце своего ответа укажи возможный диагноз на основе описанных симптомов, " +
+            "но предупреди, что для точного диагноза необходимо обратиться к врачу.");
         history.add(0, systemMessage);
         return history;
     }
