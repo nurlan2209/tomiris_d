@@ -52,66 +52,65 @@ public class GeminiService {
     public String askQuestion(Long userId, String question) {
         List<Map<String, String>> history = getUserMessages(userId);
         
-        // Создаем системное сообщение
-        Map<String, String> systemMessage = new HashMap<>();
-        systemMessage.put("role", "system");
-        systemMessage.put("content", "Ты медицинский бот, специализирующийся на диагностике и консультации. " +
-            "Отвечай только на вопросы, связанные с медициной. " +
-            "Всегда указывай, что твои ответы не заменяют консультацию врача. " +
-            "Основывай свои ответы на научных данных. " +
-            "В конце своего ответа укажи возможный диагноз на основе описанных симптомов, " +
-            "но предупреди, что для точного диагноза необходимо обратиться к врачу.");
-        
-        // Собираем все сообщения
-        List<Map<String, String>> allMessages = new ArrayList<>();
-        allMessages.add(systemMessage);
-        allMessages.addAll(history);
-        
-        // Добавляем текущий вопрос
-        Map<String, String> userMessage = new HashMap<>();
-        userMessage.put("role", "user");
-        userMessage.put("content", question);
-        allMessages.add(userMessage);
-        
         try {
-            String response = callGeminiApi(allMessages);
-            return response;
-        } catch (Exception e) {
-            System.err.println("Error during Gemini API call: " + e.getMessage());
-            e.printStackTrace();
-            return "Извините, произошла ошибка. Пожалуйста, попробуйте позже.";
-        }
-    }
-    
-    private String callGeminiApi(List<Map<String, String>> messages) {
-        // URL для Gemini API
-        String url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + apiKey;
-        
-        // Подготовка тела запроса
-        Map<String, Object> requestBody = new HashMap<>();
-        
-        List<Map<String, Object>> contents = new ArrayList<>();
-        for (Map<String, String> message : messages) {
-            Map<String, Object> content = new HashMap<>();
-            content.put("role", message.get("role"));
+            // URL для Gemini API
+            String url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + apiKey;
             
-            List<Map<String, String>> parts = new ArrayList<>();
-            parts.add(Map.of("text", message.get("content")));
-            content.put("parts", parts);
+            // Подготовка тела запроса
+            Map<String, Object> requestBody = new HashMap<>();
             
-            contents.add(content);
-        }
-        
-        requestBody.put("contents", contents);
-        
-        // Настройки генерации
-        Map<String, Object> generationConfig = new HashMap<>();
-        generationConfig.put("temperature", 0.7);
-        generationConfig.put("maxOutputTokens", 1024);
-        requestBody.put("generationConfig", generationConfig);
-        
-        // Выполнение запроса
-        try {
+            List<Map<String, Object>> contents = new ArrayList<>();
+            
+            // Если это первое сообщение, добавляем инструкции как часть сообщения пользователя
+            if (history.isEmpty()) {
+                Map<String, Object> firstContent = new HashMap<>();
+                firstContent.put("role", "user");
+                
+                List<Map<String, String>> parts = new ArrayList<>();
+                parts.add(Map.of("text", 
+                    "Ты медицинский бот, специализирующийся на диагностике и консультации. " +
+                    "Отвечай только на вопросы, связанные с медициной. " +
+                    "Всегда указывай, что твои ответы не заменяют консультацию врача. " +
+                    "Основывай свои ответы на научных данных. " +
+                    "В конце своего ответа укажи возможный диагноз на основе описанных симптомов, " +
+                    "но предупреди, что для точного диагноза необходимо обратиться к врачу.\n\n" +
+                    "Вопрос пользователя: " + question));
+                
+                firstContent.put("parts", parts);
+                contents.add(firstContent);
+            } else {
+                // Добавляем историю сообщений
+                for (Map<String, String> message : history) {
+                    Map<String, Object> content = new HashMap<>();
+                    content.put("role", message.get("role"));
+                    
+                    List<Map<String, String>> parts = new ArrayList<>();
+                    parts.add(Map.of("text", message.get("content")));
+                    content.put("parts", parts);
+                    
+                    contents.add(content);
+                }
+                
+                // Добавляем текущий вопрос
+                Map<String, Object> userContent = new HashMap<>();
+                userContent.put("role", "user");
+                
+                List<Map<String, String>> parts = new ArrayList<>();
+                parts.add(Map.of("text", question));
+                userContent.put("parts", parts);
+                
+                contents.add(userContent);
+            }
+            
+            requestBody.put("contents", contents);
+            
+            // Настройки генерации
+            Map<String, Object> generationConfig = new HashMap<>();
+            generationConfig.put("temperature", 0.7);
+            generationConfig.put("maxOutputTokens", 1024);
+            requestBody.put("generationConfig", generationConfig);
+            
+            // Выполнение запроса
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             
