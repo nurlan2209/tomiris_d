@@ -1,0 +1,684 @@
+/* Стили для секции About */
+.about-section {
+    padding: 5rem 0;
+    background-color: var(--background-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: -150px;
+    right: -150px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(26, 117, 206, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.about-section::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(56, 182, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Стили для основной карточки с миссией */
+.about-card {
+    background-color: var(--background-white);
+    border-radius: var(--border-radius-large);
+    padding: 3rem;
+    margin-bottom: 4rem;
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-default);
+    animation: fadeInUp 1s ease-out;
+}
+
+.about-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-large);
+}
+
+.about-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    border-radius: 4px 0 0 4px;
+}
+
+.about-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-light);
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    box-shadow: var(--shadow-light);
+}
+
+.about-card h2 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.about-card h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 1.5px;
+}
+
+.about-card p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-medium);
+    margin-bottom: 1rem;
+}
+
+/* Стили для контейнера изображения */
+.about-image-container {
+    text-align: center;
+    margin: 3rem 0;
+    position: relative;
+}
+
+.about-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-large);
+    transition: var(--transition-default);
+    animation: fadeIn 1.5s ease-out;
+    position: relative;
+    z-index: 2;
+}
+
+.about-image-container::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    border: 5px solid var(--primary-color);
+    border-radius: var(--border-radius-large);
+    opacity: 0.3;
+    z-index: 1;
+    animation: fadeIn 2s ease-out;
+}
+
+.about-image:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-extra-large);
+}
+
+/* Стили для секции возможностей */
+.about-features {
+    margin: 5rem 0;
+    position: relative;
+}
+
+.about-features h2 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.about-features h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 1.5px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-item {
+    background-color: var(--background-white);
+    border-radius: var(--border-radius-medium);
+    padding: 2rem;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-default);
+    animation: fadeInUp 1.2s ease-out;
+    animation-fill-mode: both;
+}
+
+.feature-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.feature-item:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.feature-item:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.feature-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-medium);
+}
+
+.feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-light);
+    border-radius: 50%;
+    margin-bottom: 1.2rem;
+    font-size: 1.5rem;
+    box-shadow: var(--shadow-light);
+}
+
+.feature-item h3 {
+    color: var(--text-dark);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-item p {
+    color: var(--text-medium);
+    line-height: 1.5;
+}
+
+/* Стили для секции команды */
+.about-team {
+    margin: 5rem 0 2rem;
+    position: relative;
+}
+
+.about-team h2 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.about-team h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 1.5px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.team-member {
+    background-color: var(--background-white);
+    border-radius: var(--border-radius-medium);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    transition: var(--transition-default);
+    animation: fadeInUp 1.5s ease-out;
+    animation-fill-mode: both;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-member::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+}
+
+.team-member:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.team-member:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-medium);
+}
+
+.member-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-light);
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    box-shadow: var(--shadow-light);
+    position: relative;
+}
+
+.member-avatar::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: rotate 20s linear infinite;
+}
+
+.team-member h3 {
+    color: var(--text-dark);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.team-member p {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Дополнительные стили для адаптивного дизайна */
+@media (max-width: 992px) {
+    .about-card {
+        padding: 2rem;
+    }
+    
+    .about-icon, .feature-icon, .member-avatar {
+        transform: scale(0.9);
+    }
+    
+    .about-card h2, .about-features h2, .about-team h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-image-container::before {
+        display: none;
+    }
+    
+    .features-grid, .team-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .about-card h2, .about-features h2, .about-team h2 {
+        font-size: 1.8rem;
+    }
+    
+    .about-card p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-card {
+        padding: 1.5rem;
+    }
+    
+    .about-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .member-avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+    
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Стили для Contact Section */
+.contact-section {
+    padding: 5rem 0;
+    background-color: var(--background-light);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    margin-top: 2rem;
+}
+
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(56, 182, 255, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.contact-section::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(26, 117, 206, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.contact-section .section-header {
+    margin-bottom: 3rem;
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+}
+
+.contact-section .section-title {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.contact-section .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: space-between;
+}
+
+.contact-info {
+    flex: 1 1 400px;
+    animation: fadeInLeft 1.2s ease-out;
+}
+
+.contact-map {
+    flex: 1 1 500px;
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    animation: fadeInRight 1.2s ease-out;
+}
+
+.contact-map iframe {
+    border-radius: var(--border-radius-medium);
+    transition: var(--transition-default);
+}
+
+.contact-map::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius-medium);
+    opacity: 0.2;
+    z-index: 1;
+    pointer-events: none;
+    animation: pulse 2s infinite;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+    background-color: var(--background-white);
+    border-radius: var(--border-radius-medium);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition-default);
+    border-left: 4px solid var(--primary-color);
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-light);
+    border-radius: var(--border-radius-circle);
+    margin-right: 1.5rem;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    top: -50%;
+    left: -50%;
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+}
+
+.contact-item:hover .contact-icon::after {
+    top: 150%;
+    left: 150%;
+}
+
+.contact-text {
+    flex-grow: 1;
+}
+
+.contact-text h3 {
+    color: var(--text-dark);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.contact-text p {
+    color: var(--text-medium);
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* Адаптивный дизайн */
+@media (max-width: 992px) {
+    .contact-container {
+        gap: 2rem;
+    }
+    
+    .contact-section .section-title {
+        font-size: 2rem;
+    }
+    
+    .contact-item {
+        padding: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    .contact-info, .contact-map {
+        flex: 1 1 100%;
+    }
+    
+    .contact-section .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .contact-text h3 {
+        font-size: 1.2rem;
+    }
+    
+    .contact-text p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-section {
+        padding: 4rem 0;
+    }
+    
+    .contact-item {
+        padding: 1rem;
+    }
+    
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+        margin-right: 1rem;
+    }
+}
+
+/* Дополнительные анимации */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}

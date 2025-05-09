@@ -6,6 +6,7 @@
     <title>MedBot - Аурулар</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/disease-cards.css"> <!-- Добавьте новый CSS файл -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -45,280 +46,168 @@
             <h2 class="section-title">Жиі кездесетін аурулар</h2>
             <p class="section-subtitle">Аурулар туралы толық ақпарат</p>
         </div>
-        <div class="disease-container">
-            <div class="diease">
+        
+        <!-- Новая структура с использованием disease-grid вместо disease-container -->
+        <div class="disease-grid">
+            <!-- Жөтел -->
+            <div class="disease-card">
                 <span class="disease-tag">Жиі кездесетін</span>
-                <img th:src="@{/images/kazhel.jpg}" alt="Жөтел" class="dieases-img">
+                <div class="disease-image-container">
+                    <img th:src="@{/images/kazhel.jpg}" alt="Жөтел" class="disease-image">
+                </div>
                 <div class="disease-content">
-                    <h3 class="dieases-name">Жөтел</h3>
-                    <p class="dieases-dec">
+                    <h3 class="disease-title">Жөтел</h3>
+                    <p class="disease-description">
                         Жөтел – тыныс алу жүйесі ауруларының ең жиі кездесетін белгілерінің бірі. Көптеген себептерден пайда болуы мүмкін және әртүрлі типтері болады.
                     </p>
                     <div class="disease-stats">
-                        <div class="stat">
-                            <div class="stat-value">75%</div>
-                            <div class="stat-label">Жиілігі</div>
+                        <div class="disease-stat">
+                            <span class="stat-value">75%</span>
+                            <span class="stat-label">Жиілігі</span>
                         </div>
-                        <div class="stat">
-                            <div class="stat-value">5-7</div>
-                            <div class="stat-label">Емделу күні</div>
+                        <div class="disease-stat">
+                            <span class="stat-value">5-7</span>
+                            <span class="stat-label">Емделу күні</span>
                         </div>
                     </div>
-                    <a th:href="@{/more-details1}" class="dieases-link">
+                    <a th:href="@{/more-details1}" class="disease-button">
                         <i class="fas fa-plus-circle"></i> Толығырақ
                     </a>
                 </div>
             </div>
-            <div class="diease">
-                <img th:src="@{/images/tumaw.webp}" alt="Тұмау" class="dieases-img">
+
+            <!-- Тұмау -->
+            <div class="disease-card">
+                <div class="infectious-tag">Жұқпалы</div>
+                <div class="disease-image-container">
+                    <img th:src="@{/images/tumaw.webp}" alt="Тұмау" class="disease-image">
+                </div>
                 <div class="disease-content">
-                    <h3 class="dieases-name">Тұмау</h3>
-                    <p class="dieases-dec">
+                    <h3 class="disease-title">Тұмау</h3>
+                    <p class="disease-description">
                         Тұмау – бұл кез келген адамның жұқтыруы мүмкін жұқпалы ауруы. Респираторлық жүйеге әсер етіп, жөтел, қызба және басқа да симптомдарға әкеледі.
                     </p>
                     <div class="disease-stats">
-                        <div class="stat">
-                            <div class="stat-value">90%</div>
-                            <div class="stat-label">Жиілігі</div>
+                        <div class="disease-stat">
+                            <span class="stat-value">90%</span>
+                            <span class="stat-label">Жиілігі</span>
                         </div>
-                        <div class="stat">
-                            <div class="stat-value">7-10</div>
-                            <div class="stat-label">Емделу күні</div>
+                        <div class="disease-stat">
+                            <span class="stat-value">7-10</span>
+                            <span class="stat-label">Емделу күні</span>
                         </div>
                     </div>
-                    <a th:href="@{/more-details2}" class="dieases-link">
+                    <a th:href="@{/more-details2}" class="disease-button">
                         <i class="fas fa-plus-circle"></i> Толығырақ
                     </a>
                 </div>
             </div>
-            <div class="diease">
+
+            <!-- Бас ауру -->
+            <div class="disease-card">
                 <span class="disease-tag">Жиі кездесетін</span>
-                <img th:src="@{/images/bas awrwı.webp}" alt="Бас ауру" class="dieases-img">
+                <div class="disease-image-container">
+                    <img th:src="@{/images/bas awrwı.webp}" alt="Бас ауру" class="disease-image">
+                </div>
                 <div class="disease-content">
-                    <h3 class="dieases-name">Бас ауру</h3>
-                    <p class="dieases-dec">
+                    <h3 class="disease-title">Бас ауру</h3>
+                    <p class="disease-description">
                         Бас ауруы – адамға әртүрлі дәрежедегі ауырсыну әкелетін және көп қолайсыздық тудыратын сырқат. Әртүрлі себептерден пайда болуы мүмкін.
                     </p>
                     <div class="disease-stats">
-                        <div class="stat">
-                            <div class="stat-value">85%</div>
-                            <div class="stat-label">Жиілігі</div>
+                        <div class="disease-stat">
+                            <span class="stat-value">85%</span>
+                            <span class="stat-label">Жиілігі</span>
                         </div>
-                        <div class="stat">
-                            <div class="stat-value">1-3</div>
-                            <div class="stat-label">Емделу күні</div>
+                        <div class="disease-stat">
+                            <span class="stat-value">1-3</span>
+                            <span class="stat-label">Емделу күні</span>
                         </div>
                     </div>
-                    <a th:href="@{/more-details3}" class="dieases-link">
+                    <a th:href="@{/more-details3}" class="disease-button">
                         <i class="fas fa-plus-circle"></i> Толығырақ
                     </a>
                 </div>
             </div>
-            <div class="diease">
-                <img th:src="@{/images/asqazan awrwı.jpg}" alt="Асқазан ауруы" class="dieases-img">
+
+            <!-- Асқазан ауруы -->
+            <div class="disease-card">
+                <div class="disease-image-container">
+                    <img th:src="@{/images/asqazan awrwı.jpg}" alt="Асқазан ауруы" class="disease-image">
+                </div>
                 <div class="disease-content">
-                    <h3 class="dieases-name">Асқазан ауруы</h3>
-                    <p class="dieases-dec">
+                    <h3 class="disease-title">Асқазан ауруы</h3>
+                    <p class="disease-description">
                         Асқазан-ішек жолдарының аурулары әдетте адам ағзасының басқа жүйелерінің жұмысындағы проблемалармен байланысты болуы мүмкін.
                     </p>
                     <div class="disease-stats">
-                        <div class="stat">
-                            <div class="stat-value">65%</div>
-                            <div class="stat-label">Жиілігі</div>
+                        <div class="disease-stat">
+                            <span class="stat-value">65%</span>
+                            <span class="stat-label">Жиілігі</span>
                         </div>
-                        <div class="stat">
-                            <div class="stat-value">7-14</div>
-                            <div class="stat-label">Емделу күні</div>
+                        <div class="disease-stat">
+                            <span class="stat-value">7-14</span>
+                            <span class="stat-label">Емделу күні</span>
                         </div>
                     </div>
-                    <a th:href="@{/more-details4}" class="dieases-link">
+                    <a th:href="@{/more-details4}" class="disease-button">
                         <i class="fas fa-plus-circle"></i> Толығырақ
                     </a>
                 </div>
             </div>
-            <div class="diease">
-                <img th:src="@{/images/denedegi jaralarrrr.jpg}" alt="Денедегі жаралар" class="dieases-img">
+
+            <!-- Денедегі жаралар -->
+            <div class="disease-card">
+                <div class="disease-image-container">
+                    <img th:src="@{/images/denedegi jaralarrrr.jpg}" alt="Денедегі жаралар" class="disease-image">
+                </div>
                 <div class="disease-content">
-                    <h3 class="dieases-name">Денедегі жаралар</h3>
-                    <p class="dieases-dec">
+                    <h3 class="disease-title">Денедегі жаралар</h3>
+                    <p class="disease-description">
                         Денедегі жаралар әртүрлі себептерден пайда болуы мүмкін. Олар теріні зақымдайды және ауырсыну, қызару және ісіну сияқты белгілермен байқалады.
                     </p>
                     <div class="disease-stats">
-                        <div class="stat">
-                            <div class="stat-value">45%</div>
-                            <div class="stat-label">Жиілігі</div>
+                        <div class="disease-stat">
+                            <span class="stat-value">45%</span>
+                            <span class="stat-label">Жиілігі</span>
                         </div>
-                        <div class="stat">
-                            <div class="stat-value">3-21</div>
-                            <div class="stat-label">Емделу күні</div>
+                        <div class="disease-stat">
+                            <span class="stat-value">3-21</span>
+                            <span class="stat-label">Емделу күні</span>
                         </div>
                     </div>
-                    <a th:href="@{/more-details5}" class="dieases-link">
+                    <a th:href="@{/more-details5}" class="disease-button">
                         <i class="fas fa-plus-circle"></i> Толығырақ
                     </a>
                 </div>
             </div>
-            <div class="diease">
+
+            <!-- Көздің ауруы -->
+            <div class="disease-card">
                 <span class="disease-tag">Маңызды</span>
-                <img th:src="@{/images/köz awrwı.webp}" alt="Көздің ауруы" class="dieases-img">
+                <div class="disease-image-container">
+                    <img th:src="@{/images/köz awrwı.webp}" alt="Көздің ауруы" class="disease-image">
+                </div>
                 <div class="disease-content">
-                    <h3 class="dieases-name">Көздің ауруы</h3>
-                    <p class="dieases-dec">
+                    <h3 class="disease-title">Көздің ауруы</h3>
+                    <p class="disease-description">
                         Көз аурулары – көздің көруінің нашарлауынан, оның сәуле сындыру күшінің ақауларынан пайда болатын және іштен туа біткен аурулар.
                     </p>
                     <div class="disease-stats">
-                        <div class="stat">
-                            <div class="stat-value">40%</div>
-                            <div class="stat-label">Жиілігі</div>
+                        <div class="disease-stat">
+                            <span class="stat-value">40%</span>
+                            <span class="stat-label">Жиілігі</span>
                         </div>
-                        <div class="stat">
-                            <div class="stat-value">7-30</div>
-                            <div class="stat-label">Емделу күні</div>
+                        <div class="disease-stat">
+                            <span class="stat-value">7-30</span>
+                            <span class="stat-label">Емделу күні</span>
                         </div>
                     </div>
-                    <a th:href="@{/more-details6}" class="dieases-link">
+                    <a th:href="@{/more-details6}" class="disease-button">
                         <i class="fas fa-plus-circle"></i> Толығырақ
                     </a>
                 </div>
             </div>
-            
-            <!-- Дополнительные болезни для страницы diseases -->
-            <div class="diease">
-                <span class="disease-tag">Маусымдық</span>
-                <img th:src="@{/images/producti.jpg}" alt="Аллергия" class="dieases-img">
-                <div class="disease-content">
-                    <h3 class="dieases-name">Аллергия</h3>
-                    <p class="dieases-dec">
-                        Аллергия – иммундық жүйенің кейбір заттарға (аллергендерге) қалыптан тыс реакциясы. Ол тыныс алу қиындығы, теріде бөртпелер пайда болуы немесе басқа да симптомдармен көрінеді.
-                    </p>
-                    <div class="disease-stats">
-                        <div class="stat">
-                            <div class="stat-value">30%</div>
-                            <div class="stat-label">Жиілігі</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">7-14</div>
-                            <div class="stat-label">Емделу күні</div>
-                        </div>
-                    </div>
-                    <a href="#" class="dieases-link">
-                        <i class="fas fa-plus-circle"></i> Толығырақ
-                    </a>
-                </div>
-            </div>
-            <div class="diease">
-                <img th:src="@{/images/kazhel15.jpg}" alt="Бронхит" class="dieases-img">
-                <div class="disease-content">
-                    <h3 class="dieases-name">Бронхит</h3>
-                    <p class="dieases-dec">
-                        Бронхит – бронхтардың қабынуы, көбінесе жұқпалы ауруларға байланысты пайда болады. Негізгі белгілері – жөтел, қақырық, тыныс алудың қиындауы.
-                    </p>
-                    <div class="disease-stats">
-                        <div class="stat">
-                            <div class="stat-value">55%</div>
-                            <div class="stat-label">Жиілігі</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">10-14</div>
-                            <div class="stat-label">Емделу күні</div>
-                        </div>
-                    </div>
-                    <a href="#" class="dieases-link">
-                        <i class="fas fa-plus-circle"></i> Толығырақ
-                    </a>
-                </div>
-            </div>
-            <div class="diease">
-                <span class="disease-tag">Жұқпалы</span>
-                <img th:src="@{/images/tuberkulez.jpg}" alt="Туберкулез" class="dieases-img">
-                <div class="disease-content">
-                    <h3 class="dieases-name">Туберкулез</h3>
-                    <p class="dieases-dec">
-                        Туберкулез – Mycobacterium tuberculosis бактериясынан туындайтын жұқпалы ауру. Көбінесе өкпеге әсер етеді, бірақ басқа мүшелерге де таралуы мүмкін.
-                    </p>
-                    <div class="disease-stats">
-                        <div class="stat">
-                            <div class="stat-value">15%</div>
-                            <div class="stat-label">Жиілігі</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">180+</div>
-                            <div class="stat-label">Емделу күні</div>
-                        </div>
-                    </div>
-                    <a href="#" class="dieases-link">
-                        <i class="fas fa-plus-circle"></i> Толығырақ
-                    </a>
-                </div>
-            </div>
-            <div class="diease">
-                <img th:src="@{/images/kazhel11.jpg}" alt="Ангина" class="dieases-img">
-                <div class="disease-content">
-                    <h3 class="dieases-name">Ангина</h3>
-                    <p class="dieases-dec">
-                        Ангина (тонзиллит) – тамақтың және бадамша бездердің қабынуы. Жұтыну кезінде ауырсыну, қызба, әлсіздік сияқты белгілермен сипатталады.
-                    </p>
-                    <div class="disease-stats">
-                        <div class="stat">
-                            <div class="stat-value">60%</div>
-                            <div class="stat-label">Жиілігі</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">7-10</div>
-                            <div class="stat-label">Емделу күні</div>
-                        </div>
-                    </div>
-                    <a href="#" class="dieases-link">
-                        <i class="fas fa-plus-circle"></i> Толығырақ
-                    </a>
-                </div>
-            </div>
-            <div class="diease">
-                <span class="disease-tag">Созылмалы</span>
-                <img th:src="@{/images/robot.webp}" alt="Артрит" class="dieases-img">
-                <div class="disease-content">
-                    <h3 class="dieases-name">Артрит</h3>
-                    <p class="dieases-dec">
-                        Артрит – буындардың қабынуы және зақымдануы. Буындарда ауырсыну, қаттылық, ісіну және қозғалыстардың шектелуі сияқты белгілерімен танылады.
-                    </p>
-                    <div class="disease-stats">
-                        <div class="stat">
-                            <div class="stat-value">25%</div>
-                            <div class="stat-label">Жиілігі</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">Созылмалы</div>
-                            <div class="stat-label">Түрі</div>
-                        </div>
-                    </div>
-                    <a href="#" class="dieases-link">
-                        <i class="fas fa-plus-circle"></i> Толығырақ
-                    </a>
-                </div>
-            </div>
-            <div class="diease">
-                <img th:src="@{/images/banner.png}" alt="Гипертония" class="dieases-img">
-                <div class="disease-content">
-                    <h3 class="dieases-name">Гипертония</h3>
-                    <p class="dieases-dec">
-                        Гипертония – қан қысымының жоғарылауы. Көбінесе симптомсыз өтеді, бірақ бас ауруы, бас айналу, көз алдында шаршау сияқты белгілер болуы мүмкін.
-                    </p>
-                    <div class="disease-stats">
-                        <div class="stat">
-                            <div class="stat-value">35%</div>
-                            <div class="stat-label">Жиілігі</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-value">Созылмалы</div>
-                            <div class="stat-label">Түрі</div>
-                        </div>
-                    </div>
-                    <a href="#" class="dieases-link">
-                        <i class="fas fa-plus-circle"></i> Толығырақ
-                    </a>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Health Tips Section -->
@@ -389,7 +278,7 @@
         </div>
         <div class="accordion">
             <div class="accordion-item">
-                <div class="accordion-header">
+                <div class="accordion-header" data-number="1">
                     <div class="accordion-title">Ауру белгілері пайда болған кезде дереу дәрігерге қаралу керек пе?</div>
                     <div class="accordion-icon"></div>
                 </div>
@@ -398,7 +287,7 @@
                 </div>
             </div>
             <div class="accordion-item">
-                <div class="accordion-header">
+                <div class="accordion-header" data-number="2">
                     <div class="accordion-title">Антибиотиктерді өз бетімен қабылдауға болады ма?</div>
                     <div class="accordion-icon"></div>
                 </div>
@@ -407,7 +296,7 @@
                 </div>
             </div>
             <div class="accordion-item">
-                <div class="accordion-header">
+                <div class="accordion-header" data-number="3">
                     <div class="accordion-title">Ауруды қалай алдын алуға болады?</div>
                     <div class="accordion-icon"></div>
                 </div>
@@ -416,7 +305,7 @@
                 </div>
             </div>
             <div class="accordion-item">
-                <div class="accordion-header">
+                <div class="accordion-header" data-number="4">
                     <div class="accordion-title">Созылмалы аурулары бар адамдар қандай ережелерді сақтау керек?</div>
                     <div class="accordion-icon"></div>
                 </div>
@@ -427,59 +316,96 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-column">
-                <h4>Контактілер</h4>
-                <p><i class="fas fa-phone"></i> Телефон нөмірі: +7 (123) 456-78-90</p>
-                <p><i class="fas fa-envelope"></i> Email: info@medbot.kz</p>
-                <p><i class="fas fa-map-marker-alt"></i> Мекен-жайы: Астана қ., Нұр-Сұлтан даңғылы, 37</p>
-            </div>
-            <div class="footer-column">
-                <h4>Біз жайлы</h4>
-                <p>MedBot - медициналық ақпарат пен кеңес беру платформасы. Біз сізге денсаулығыңызды сақтауға көмектесеміз.</p>
-                <p>© 2025 MedBot. Барлық құқықтар қорғалған.</p>
-            </div>
-            <div class="footer-column">
-                <h4>Әлеуметтік желілер</h4>
-                <p class="social-link">
-                    <a href="#" class="social-item">
-                        <img th:src="@{/images/instagram.webp}" alt="Instagram" class="social-img">
-                        Instagram
-                    </a>
-                </p>
-                <p class="social-link">
-                    <a href="#" class="social-item">
-                        <img th:src="@{/images/Facebook.png}" alt="Facebook" class="social-img">
-                        Facebook
-                    </a>
-                </p>
-                <p class="social-link">
-                    <a href="#" class="social-item">
-                        <img th:src="@{/images/ChatGPT.jpg}" alt="ChatGPT" class="social-img">
-                        Telegram
-                    </a>
-                </p>
-            </div>
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-column">
+            <h4>Контактілер</h4>
+            <p><i class="fas fa-phone"></i> Телефон нөмірі: +7 (123) 456-78-90</p>
+            <p><i class="fas fa-envelope"></i> Email: info@medbot.kz</p>
+            <p><i class="fas fa-map-marker-alt"></i> Мекен-жайы: Астана қ., Нұр-Сұлтан даңғылы, 37</p>
         </div>
-    </footer>
+        <div class="footer-column">
+            <h4>Біз жайлы</h4>
+            <p>MedBot - медициналық ақпарат пен кеңес беру платформасы. Біз сізге денсаулығыңызды сақтауға көмектесеміз.</p>
+            <p>© 2025 MedBot. Барлық құқықтар қорғалған.</p>
+        </div>
+        <div class="footer-column">
+            <h4>Әлеуметтік желілер</h4>
+            <p class="social-link">
+                <a href="#" class="social-item">
+                    <img th:src="@{/images/instagram.webp}" alt="Instagram" class="social-img">
+                    Instagram
+                </a>
+            </p>
+            <p class="social-link">
+                <a href="#" class="social-item">
+                    <img th:src="@{/images/Facebook.png}" alt="Facebook" class="social-img">
+                    Facebook
+                </a>
+            </p>
+            <p class="social-link">
+                <a href="#" class="social-item">
+                    <img th:src="@{/images/ChatGPT.jpg}" alt="ChatGPT" class="social-img">
+                    Telegram
+                </a>
+            </p>
+        </div>
+    </div>
+</footer>
 
-    <!-- JavaScript -->
-    <script th:src="@{/scripts/script.js}"></script>
-    <script>
-        // Initialize accordion functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const accordionItems = document.querySelectorAll('.accordion-item');
+<!-- JavaScript -->
+<script th:src="@{/scripts/script.js}"></script>
+<script>
+    // Initialize accordion functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
             
-            accordionItems.forEach(item => {
-                const header = item.querySelector('.accordion-header');
-                
-                header.addEventListener('click', function() {
-                    item.classList.toggle('active');
-                });
+            header.addEventListener('click', function() {
+                item.classList.toggle('active');
             });
-            
-            // Animate disease cards on scroll
-            animateDiseaseCards();
         });
+        
+        // Animate disease cards on scroll
+        animateDiseaseCards();
+    });
+    
+    // Animate disease cards on scroll
+    function animateDiseaseCards() {
+        const diseaseCards = document.querySelectorAll('.disease-card');
+        
+        if (diseaseCards.length > 0) {
+            // Check if IntersectionObserver is supported
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                // Set initial styles and observe each card
+                diseaseCards.forEach(card => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(50px)';
+                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    observer.observe(card);
+                });
+            } else {
+                // Fallback for browsers that don't support IntersectionObserver
+                diseaseCards.forEach(card => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                });
+            }
+        }
+    }
+</script>
+</body>
+</html>

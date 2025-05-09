@@ -21,7 +21,8 @@ public class MainController {
     }
 
     @GetMapping("/diseases")
-    public String diseases(Model model) {
+    public String diseases(Model model, Authentication authentication) {
+        model.addAttribute("authentication", authentication); 
         return "diseases";
     }
 
