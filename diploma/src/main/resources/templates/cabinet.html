@@ -35,6 +35,42 @@
             <p>Қош келдіңіз, <span th:text="${userName}" class="user-name">User</span>!</p>
         </div>
 
+
+        <div class="health-tips">
+            <h3><i class="fas fa-file-medical"></i> Медициналық карта</h3>
+            <div class="tips-container">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-id-card-alt"></i>
+                    </div>
+                    <h4>Медициналық карта</h4>
+                    <p>Дәлірек кеңес алу үшін медициналық картаңызды толтырыңыз.</p>
+                    <a href="/medical-card" class="disease-button">
+                        <i class="fas fa-file-medical"></i> Картаға өту
+                    </a>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h4>ДСИ калькуляторы</h4>
+                    <p>Дене салмағы индексін есептеп, салмағыңыздың нормаға сәйкестігін біліңіз.</p>
+                    <a href="/medical-card/bmi-calculator" class="disease-button">
+                        <i class="fas fa-calculator"></i> ДСИ есептеу
+                    </a>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h4>Алдын ала диагноз</h4>
+                    <p>Симптомдарыңызға негізделген жағдайыңыздың алдын ала бағасын алыңыз.</p>
+                    <a href="/medical-card/diagnosis" class="disease-button">
+                        <i class="fas fa-stethoscope"></i> Диагностика
+                    </a>
+                </div>
+            </div>
+        </div>
         <div class="chat-container">
             <div class="chat-header">
                 <div class="chat-avatar">
@@ -45,6 +81,7 @@
                     <p class="chat-subtitle">Медициналық кеңесші</p>
                 </div>
             </div>
+            
 
             <div id="chat-window" class="chat-window">
                 <div class="chat-messages">

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="kk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedBot - Алдын ала диагноз</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .medical-card-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .medical-card-form {
+            background-color: var(--background-white);
+            border-radius: var(--border-radius-large);
+            padding: 2rem;
+            box-shadow: var(--shadow-medium);
+            margin-bottom: 2rem;
+        }
+        
+        .form-section {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 1.5rem;
+        }
+        
+        .form-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            flex: 1 1 300px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-submit {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .medical-card-tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+        }
+        
+        .medical-card-tab {
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius-small) var(--border-radius-small) 0 0;
+            background-color: var(--background-light);
+            color: var(--text-medium);
+            cursor: pointer;
+            transition: var(--transition-default);
+            margin-right: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .medical-card-tab.active {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+        
+        .medical-card-tab:hover:not(.active) {
+            background-color: var(--accent-color);
+        }
+        
+        .medical-card-tab i {
+            margin-right: 0.5rem;
+        }
+        
+        .diagnosis-result {
+            background-color: var(--accent-color);
+            border-radius: var(--border-radius-medium);
+            padding: 2rem;
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        .diagnosis-result.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .diagnosis-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .diagnosis-content {
+            white-space: pre-line;
+            line-height: 1.6;
+        }
+        
+        .diagnosis-warning {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: rgba(255, 152, 0, 0.1);
+            border-left: 3px solid #ff9800;
+            border-radius: var(--border-radius-small);
+        }
+        
+        .medical-info-summary {
+            background-color: rgba(26, 117, 206, 0.05);
+            border-radius: var(--border-radius-small);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .info-item {
+            margin-bottom: 1rem;
+            display: flex;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            min-width: 150px;
+        }
+        
+        .symptoms-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .symptom-tag {
+            background-color: rgba(26, 117, 206, 0.1);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition-default);
+        }
+        
+        .symptom-tag:hover {
+            background-color: rgba(26, 117, 206, 0.2);
+        }
+        
+        .missing-data-warning {
+            background-color: rgba(255, 152, 0, 0.1);
+            border-radius: var(--border-radius-small);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .missing-data-warning i {
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+            color: #ff9800;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 12px 20px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            background-color: var(--background-light);
+            font-size: 16px;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="menu">
+        <ul class="menu-list">
+            <li class="menu-item">
+                <a th:href="@{/}">
+                    <img class="logo" th:src="@{/images/medicine.png}" alt="MedBot логотипі">
+                </a>
+            </li>
+            <li class="menu-item"><a th:href="@{/}">Басты бет</a></li>
+            <li class="menu-item"><a th:href="@{/about}">Біз туралы</a></li>
+            <li class="menu-item"><a th:href="@{/diseases}">Аурулар</a></li>
+            <li class="menu-item"><a th:href="@{/account}">Жеке кабинет</a></li>
+            <li class="menu-item">
+                <a th:href="@{/logout}" class="auth-button-nav logout">
+                    <i class="fas fa-sign-out-alt"></i> Шығу
+                </a>
+            </li>
+        </ul>
+    </header>
+
+    <div class="personal-account">
+        <div class="account-header">
+            <h2>Алдын ала диагноз</h2>
+            <p>Қолданушы: <span th:text="${userName}" class="user-name">Қолданушы</span></p>
+        </div>
+
+        <div class="medical-card-container">
+            <!-- Табы для навигации -->
+            <div class="medical-card-tabs">
+                <a th:href="@{/medical-card}" class="medical-card-tab">
+                    <i class="fas fa-file-medical"></i> Медициналық карта
+                </a>
+                <a th:href="@{/medical-card/bmi-calculator}" class="medical-card-tab">
+                    <i class="fas fa-calculator"></i> ДСИ калькуляторы
+                </a>
+                <a th:href="@{/medical-card/diagnosis}" class="medical-card-tab active">
+                    <i class="fas fa-stethoscope"></i> Алдын ала диагноз
+                </a>
+            </div>
+
+            <div class="medical-card-form">
+                <!-- Предупреждение о недостающих данных -->
+                <div th:if="${medicalCard.birthDate == null || medicalCard.height == null || medicalCard.weight == null}" class="missing-data-warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <strong>Дәлірек талдау үшін медициналық картаны толтыру ұсынылады.</strong>
+                        <p>Кейбір маңызды деректер жоқ (туған күні, бой, салмақ). <a th:href="@{/medical-card}">Медициналық картаны толтыру</a></p>
+                    </div>
+                </div>
+
+                <!-- Сводка медицинской информации -->
+                <div class="medical-info-summary">
+                    <h3>Сіздің медициналық ақпаратыңыз</h3>
+                    <div class="info-item" th:if="${medicalCard.birthDate != null}">
+                        <div class="info-label">Жасы:</div>
+                        <div th:text="${T(java.time.Period).between(medicalCard.birthDate, T(java.time.LocalDate).now()).getYears()} + ' жас'">30 жас</div>
+                    </div>
+                    <div class="info-item" th:if="${medicalCard.gender != null}">
+                        <div class="info-label">Жынысы:</div>
+                        <div th:text="${medicalCard.gender == 'MALE' ? 'Ер' : 'Әйел'}">Ер</div>
+                    </div>
+                    <div class="info-item" th:if="${medicalCard.height != null && medicalCard.weight != null}">
+                        <div class="info-label">ДСИ:</div>
+                        <div th:text="${#numbers.formatDecimal(medicalCard.calculateBMI(), 1, 1)} + ' - ' + ${medicalCard.getBMICategory() == 'NORMAL' ? 'Қалыпты дене салмағы' : medicalCard.getBMICategory() == 'OVERWEIGHT' ? 'Артық салмақ' : medicalCard.getBMICategory() == 'OBESE' ? 'Семіздік' : 'Салмақ жетіспеушілігі'}">25.0 - Қалыпты дене салмағы</div>
+                    </div>
+                    <div class="info-item" th:if="${medicalCard.allergies != null && !medicalCard.allergies.isEmpty()}">
+                        <div class="info-label">Аллергиялар:</div>
+                        <div th:text="${medicalCard.allergies}">Тозаң, пенициллин</div>
+                    </div>
+                    <div class="info-item" th:if="${medicalCard.chronicDiseases != null && !medicalCard.chronicDiseases.isEmpty()}">
+                        <div class="info-label">Созылмалы аурулар:</div>
+                        <div th:text="${medicalCard.chronicDiseases}">Гипертония</div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Сіздің симптомдарыңызды сипаттаңыз</h3>
+                    <p>Симптомдарыңызды мүмкіндігінше толық сипаттаңыз. Олардың қашан басталғанын, қаншалықты ауыр екенін және уақыт өте келе нашарлап жатқанын көрсетіңіз.</p>
+                    
+                    <form th:action="@{/medical-card/diagnosis}" method="post">
+                        <div class="form-group">
+                            <label for="symptoms">Симптомдар</label>
+                            <textarea id="symptoms" name="symptoms" th:text="${symptoms}" rows="6" required class="form-control" 
+                                    placeholder="Мысалы: Менде үш күн бойы жоғары температура және жөтел бар. Сондай-ақ әлсіздік пен бас ауруын сеземін."></textarea>
+                        </div>
+                        
+                        <p>Жиі кездесетін симптомдар:</p>
+                        <div class="symptoms-tags">
+                            <span class="symptom-tag" onclick="addSymptom('Жөтел')">Жөтел</span>
+                            <span class="symptom-tag" onclick="addSymptom('Бас ауруы')">Бас ауруы</span>
+                            <span class="symptom-tag" onclick="addSymptom('Мұрынның бітелуі')">Мұрынның бітелуі</span>
+                            <span class="symptom-tag" onclick="addSymptom('Жоғары температура')">Жоғары температура</span>
+                            <span class="symptom-tag" onclick="addSymptom('Жүрек айну')">Жүрек айну</span>
+                            <span class="symptom-tag" onclick="addSymptom('Шаршау')">Шаршау</span>
+                            <span class="symptom-tag" onclick="addSymptom('Тамадағы ауру')">Тамадағы ауру</span>
+                            <span class="symptom-tag" onclick="addSymptom('Ентігу')">Ентігу</span>
+                            <span class="symptom-tag" onclick="addSymptom('Қатты шаршау')">Қатты шаршау</span>
+                        </div>
+                        
+                        <div class="form-submit">
+                            <button type="submit" class="auth-button">
+                                <i class="fas fa-stethoscope"></i> Алдын ала диагноз алу
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Результат диагноза, если есть -->
+                <div th:if="${diagnosis != null}" class="diagnosis-result active">
+                    <div class="diagnosis-title">Сіздің симптомдарыңыздың алдын ала талдауы</div>
+                    <div class="diagnosis-content" th:text="${diagnosis}">
+                        Диагноз осында болады
+                    </div>
+                    <div class="diagnosis-warning">
+                        <strong>Маңызды:</strong> Бұл тек сіз берген ақпаратқа негізделген алдын ала талдау.
+                        Ол кәсіби медициналық диагнозды алмастырмайды. Егер симптомдар ауыр болса немесе нашарласа, дәрігерге хабарласыңыз.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="health-tips">
+                <h3><i class="fas fa-info-circle"></i> Маңызды ақпарат</h3>
+                <p>Алдын ала диагноз сіздің медициналық картаңызға және сипатталған симптомдарға негізделген. Медициналық карта неғұрлым толық болса және симптомдар егжей-тегжейлі сипатталса, талдау соғұрлым дәлірек болады.</p>
+                <p>Есіңізде болсын: бұл қызмет тек бағдарламалық талдау береді және білікті дәрігердің кеңесін алмастыра алмайды!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Байланыстар</h4>
+                <p><i class="fas fa-phone"></i> Телефон нөмірі: +7 (123) 456-78-90</p>
+                <p><i class="fas fa-envelope"></i> Email: info@medbot.kz</p>
+            </div>
+            <div class="footer-column">
+                <h4>Біз туралы</h4>
+                <p>MedBot - медициналық ақпарат пен кеңес беру платформасы.</p>
+                <p>© 2025 MedBot. Барлық құқықтар қорғалған.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Әлеуметтік желілер</h4>
+                <p class="social-link">
+                    <a href="#" class="social-item">
+                        <img th:src="@{/images/instagram.webp}" alt="Instagram" class="social-img">
+                        Instagram
+                    </a>
+                </p>
+                <p class="social-link">
+                    <a href="#" class="social-item">
+                        <img th:src="@{/images/Facebook.png}" alt="Facebook" class="social-img">
+                        Facebook
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script th:src="@{/scripts/script.js}"></script>
+    <script>
+        function addSymptom(symptom) {
+            const symptomsTextarea = document.getElementById('symptoms');
+            const currentText = symptomsTextarea.value;
+            
+            if (currentText === '') {
+                symptomsTextarea.value = symptom;
+            } else if (currentText.endsWith('.') || currentText.endsWith('!') || currentText.endsWith('?')) {
+                symptomsTextarea.value = currentText + ' ' + symptom;
+            } else {
+                symptomsTextarea.value = currentText + (currentText.endsWith(' ') ? '' : ', ') + symptom;
+            }
+            
+            symptomsTextarea.focus();
+        }
+    </script>
+</body>
+</html>
