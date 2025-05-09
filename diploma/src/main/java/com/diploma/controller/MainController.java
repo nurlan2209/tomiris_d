@@ -15,7 +15,8 @@ public class MainController {
     }
 
     @GetMapping("/about")
-    public String about(Model model) {
+    public String about(Model model, Authentication authentication) {
+        model.addAttribute("authentication", authentication); 
         return "about";
     }
 
@@ -55,4 +56,3 @@ public class MainController {
     }
 
 }
-

@@ -18,9 +18,9 @@
                 </a>
             </li>
             <li class="menu-item"><a th:href="@{/}">Басты бет</a></li>
-            <li class="menu-item"><a th:if="${authentication?.principal != null}" th:href="@{/about}">Біз жайлы</a></li>
-            <li class="menu-item"><a th:if="${authentication?.principal != null}" th:href="@{/diseases}">Аурулар</a></li>
-            <li class="menu-item"><a th:if="${authentication?.principal != null}" th:href="@{/account}">Жеке кабинет</a></li>
+            <li class="menu-item"><a th:href="@{/about}">Біз жайлы</a></li>
+            <li class="menu-item"><a th:href="@{/diseases}">Аурулар</a></li>
+            <li class="menu-item"><a th:href="@{/account}">Жеке кабинет</a></li>
             <li class="menu-item">
                 <a th:if="${authentication?.principal == null}" th:href="@{/login}" class="auth-button-nav">
                     <i class="fas fa-user"></i> Кіру / Тіркелу
