@@ -1,7 +1,7 @@
 package com.diploma.controller;
 
 import com.diploma.model.User;
-import com.diploma.service.GptService;
+import com.diploma.service.GeminiService;
 import com.diploma.service.MessageService;
 import com.diploma.service.UserService;
 import org.springframework.security.core.Authentication;
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class PersonalAccountController {
 
-    private final GptService gptService;
+    private final GeminiService geminiService; // Изменено с GptService на GeminiService
     private final UserService userService;
     private final MessageService messageService;
 
-    public PersonalAccountController(GptService gptService, UserService userService, MessageService messageService) {
-        this.gptService = gptService;
+    public PersonalAccountController(GeminiService geminiService, UserService userService, MessageService messageService) {
+        this.geminiService = geminiService;
         this.userService = userService;
         this.messageService = messageService;
     }
@@ -27,7 +27,7 @@ public class PersonalAccountController {
     @GetMapping("/account")
     public String account(Model model, Authentication authentication) {
         model.addAttribute("authentication", authentication);
-        model.addAttribute("messages", gptService.getUserMessages(getUserId(authentication)));
+        model.addAttribute("messages", geminiService.getUserMessages(getUserId(authentication)));
         model.addAttribute("userName", userService.getUserById(getUserId(authentication)).getName());
         return "cabinet";
     }
@@ -37,12 +37,12 @@ public class PersonalAccountController {
                               Authentication authentication,
                               Model model) {
         Long userId = getUserId(authentication);
-        String response = gptService.askQuestion(userId, question);
+        String response = geminiService.askQuestion(userId, question);
         messageService.createMessage(userId, question, response);
 
         model.addAttribute("userName", userService.getUserById(userId).getName());
         model.addAttribute("authentication", authentication);
-        model.addAttribute("messages", gptService.getUserMessages(userId));
+        model.addAttribute("messages", geminiService.getUserMessages(userId));
         model.addAttribute("question", question);
         model.addAttribute("response", response);
 

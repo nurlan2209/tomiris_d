@@ -48,12 +48,26 @@
 
             <div id="chat-window" class="chat-window">
                 <div class="chat-messages">
+                    <!-- Поддержка как старого формата сообщений, так и нового для Gemini -->
                     <div th:each="message : ${messages}" class="chat-message">
-                        <div th:if="${message.role} == 'user'" class="user-message">
-                            <p th:text="${message.content}"></p>
+                        <!-- Проверяем тип сообщения и отображаем соответственно -->
+                        <div th:if="${message instanceof T(java.util.Map)}">
+                            <!-- Для новых сообщений в формате Map от Gemini -->
+                            <div th:if="${message.get('role') == 'user'}" class="user-message">
+                                <p th:text="${message.get('content')}"></p>
+                            </div>
+                            <div th:if="${message.get('role') == 'assistant'}" class="bot-message">
+                                <p th:text="${message.get('content')}"></p>
+                            </div>
                         </div>
-                        <div th:if="${message.role} == 'assistant'" class="bot-message">
-                            <p th:text="${message.content}"></p>
+                        <div th:unless="${message instanceof T(java.util.Map)}">
+                            <!-- Для старых сообщений от OpenAI -->
+                            <div th:if="${message.role == 'user'}" class="user-message">
+                                <p th:text="${message.content}"></p>
+                            </div>
+                            <div th:if="${message.role == 'assistant'}" class="bot-message">
+                                <p th:text="${message.content}"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
