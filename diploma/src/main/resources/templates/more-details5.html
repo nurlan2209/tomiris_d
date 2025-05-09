@@ -3,226 +3,362 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jоtel</title>
+    <title>MedBot - Пневмония туралы ақпарат</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/disease-details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<div class="banner-details">
-    <div class="menu">
+    <!-- Header Navigation -->
+    <header class="menu">
         <ul class="menu-list">
-            <li class="menu-item "><a th:href="@{/}"><img class="logo" th:src="@{/images/medicine.png}" alt=""></a></li>
+            <li class="menu-item">
+                <a th:href="@{/}">
+                    <img class="logo" th:src="@{/images/medicine.png}" alt="MedBot Logo">
+                </a>
+            </li>
             <li class="menu-item"><a th:href="@{/}">Басты бет</a></li>
-            <li class="menu-item"><a th:if="${authentication?.principal != null}" th:href="@{/about}">Біз жайлы</a></li>
-            <li class="menu-item"><a th:if="${authentication?.principal != null}" th:href="@{/account}">Личный кабинет</a></li>
-            <li class="menu-item"><a th:if="${authentication?.principal == null}" th:href="@{/login}">Тіркелу</a></li>
+            <li class="menu-item"><a th:href="@{/about}">Біз жайлы</a></li>
+            <li class="menu-item active"><a th:href="@{/diseases}">Аурулар</a></li>
+            <li class="menu-item"><a th:href="@{/account}">Жеке кабинет</a></li>
+            <li class="menu-item">
+                <a th:if="${authentication?.principal == null}" th:href="@{/login}" class="auth-button-nav">
+                    <i class="fas fa-user"></i> Кіру / Тіркелу
+                </a>
+                <a th:if="${authentication?.principal != null}" th:href="@{/logout}" class="auth-button-nav logout">
+                    <i class="fas fa-sign-out-alt"></i> Шығу
+                </a>
+            </li>
         </ul>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner-details">
+        <div class="banner-content">
+            <h1 class="page-title">Пневмония туралы толық ақпарат</h1>
+        </div>
+    </section>
+
+
+    <!-- Основной контент -->
+    <div class="disease-details-container">
+        <!-- Хлебные крошки -->
+        <div class="breadcrumbs">
+            <a th:href="@{/}">Басты бет</a>
+            <span class="breadcrumbs-separator"><i class="fas fa-chevron-right"></i></span>
+            <a th:href="@{/diseases}">Аурулар</a>
+            <span class="breadcrumbs-separator"><i class="fas fa-chevron-right"></i></span>
+            <span>Пневмония</span>
+        </div>
+
+        <!-- Заголовок -->
+        <div class="disease-header">
+            <h1 class="disease-title">Пневмония</h1>
+            <p class="disease-subtitle">Өкпенің қабынуымен сипатталатын ауыр инфекциялық ауру</p>
+        </div>
+
+        <!-- Основной контент и боковая панель -->
+        <div class="disease-content">
+            <!-- Основной контент -->
+            <div class="content-main">
+                <!-- Секция 1 -->
+                <div id="section1" class="content-section">
+                    <h2 class="section-title">Пневмонияның пайда болу себептері</h2>
+                    <div class="section-content">
+                        <p>Пневмония – өкпе тіндерінің қабынуы, көбінесе инфекциялық сипатта болады. Оның себептері:</p>
+                        <ul>
+                            <li><strong>Бактериялық инфекциялар:</strong> Пневмококк (Streptococcus pneumoniae), Haemophilus influenzae, Staphylococcus aureus.</li>
+                            <li><strong>Вирустық инфекциялар:</strong> Тұмау вирусы, респираторлық-синцитиальды вирус (RSV).</li>
+                            <li><strong>Саңырауқұлақ инфекциялары:</strong> Candida, Aspergillus (иммунитеті төмен адамдарда).</li>
+                            <li><strong>Иммунитеттің әлсіреуі:</strong> Созылмалы аурулар, АИТВ, химиотерапия.</li>
+                            <li><strong>Тыныс алу жолдарының тітіркенуі:</strong> Темекі түтіні, химиялық заттар, шаң.</li>
+                            <li><strong>Асқынулар:</strong> Тұмау, бронхит, ЖРВИ сияқты аурулардан кейін.</li>
+                            <li><strong>Қоршаған орта факторлары:</strong> Суық ауа, ластанған атмосфера.</li>
+                        </ul>
+                        <img th:src="@{/images/kazhel15.jpg}" alt="Пневмония себебі" class="section-image">
+                    </div>
+                </div>
+
+                <!-- Секция 2 -->
+                <div id="section2" class="content-section">
+                    <h2 class="section-title">Пневмонияның түрлері</h2>
+                    <div class="section-content">
+                        <p>Пневмония әртүрлі критерийлер бойынша жіктеледі:</p>
+                        <table class="info-table">
+                            <thead>
+                                <tr>
+                                    <th>Пневмония түрі</th>
+                                    <th>Сипаттамасы</th>
+                                    <th>Жиі кездесетін себептері</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Қоғамдастықтағы пневмония</td>
+                                    <td>Аурухана сыртында дамиды</td>
+                                    <td>Пневмококк, вирустар</td>
+                                </tr>
+                                <tr>
+                                    <td>Ауруханалық пневмония</td>
+                                    <td>Ауруханада болу кезінде пайда болады</td>
+                                    <td>Стафилококк, Pseudomonas</td>
+                                </tr>
+                                <tr>
+                                    <td>Вирустық пневмония</td>
+                                    <td>Вирустардан туындайды</td>
+                                    <td>Тұмау, RSV</td>
+                                </tr>
+                                <tr>
+                                    <td>Атипті пневмония</td>
+                                    <td>Микоплазма, хламидия сияқты атипті бактериялардан</td>
+                                    <td>Mycoplasma pneumoniae</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Пневмония түрі дұрыс ем тағайындау үшін маңызды. Бактериялық пневмония антибиотиктерді қажет етеді, ал вирустық пневмония симптоматикалық емдеуді талап етеді.</p>
+                        <img th:src="@{/images/kazhel11.jpg}" alt="Пневмония түрлері" class="section-image">
+                    </div>
+                </div>
+
+                <!-- Секция 3 -->
+                <div id="section3" class="content-section">
+                    <h2 class="section-title">Үй жағдайында емдеу</h2>
+                    <div class="section-content">
+                        <p>Пневмонияны үйде емдеу тек жеңіл жағдайларда және дәрігердің бақылауымен мүмкін. Негізгі әдістер:</p>
+                        <ul>
+                            <li><strong>Дәрігер тағайындаған дәрілер:</strong> Антибиотиктер (бактериялық пневмония үшін), вирусқа қарсы препараттар.</li>
+                            <li><strong>Көп сұйықтық ішу:</strong> Су, шөптік шайлар, сорпа.</li>
+                            <li><strong>Ылғалды ауа:</strong> Ауа ылғалдандырғыш қолдану, бөлмені желдету.</li>
+                            <li><strong>Демалыс:</strong> Төсек режимін сақтау, физикалық жүктемені азайту.</li>
+                            <li><strong>Жылы сусындар:</strong> Бал мен лимон қосылған шай, жылы сүт.</li>
+                            <li><strong>Бумен ингаляция:</strong> Тұзды ерітінді немесе шөптік бумен демалу (дәрігердің ұсынысымен).</li>
+                            <li><strong>Диета:</strong> Жеңіл, витаминдерге бай тағамдар (жемістер, көкөністер, сорпа).</li>
+                        </ul>
+                        <p>Пневмония – ауыр ауру, сондықтан өзін-өзі емдеу ұсынылмайды. Дәрігердің бақылауы міндетті.</p>
+                        <img th:src="@{/images/producti.jpg}" alt="Үйде емдеу" class="section-image">
+                    </div>
+                </div>
+
+                <!-- Секция 4 -->
+                <div id="section4" class="content-section">
+                    <h2 class="section-title">Қашан дәрігерге қаралу керек</h2>
+                    <div class="section-content">
+                        <p>Төмендегі жағдайларда дереу дәрігерге қаралу қажет:</p>
+                        <ul>
+                            <li>Жоғары температура (38°C-тан жоғары) 3 күннен артық сақталса.</li>
+                            <li>Тыныс алу қиындаса немесе ентігу пайда болса.</li>
+                            <li>Қақырықта қан немесе іріңді шырыш байқалса.</li>
+                            <li>Кеуде ауруы күшейсе.</li>
+                            <li>Қатты әлсіздік, тершеңдік немесе естен тану белгілері болса.</li>
+                            <li>Симптомдар 3-5 күннен кейін жақсармаса.</li>
+                        </ul>
+                        <p>Пневмония өмірге қауіпті асқынуларға (сепсис, өкпе абсцессі) әкелуі мүмкін, сондықтан уақтылы диагностика маңызды.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Боковая панель -->
+            <div class="content-sidebar">
+                <!-- Виджет со статистикой -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Пневмония туралы статистика</h3>
+                    <div class="widget-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">50%</span>
+                            <span class="stat-label">Жиілігі</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">7-14</span>
+                            <span class="stat-label">Емделу күні</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">60%</span>
+                            <span class="stat-label">Жұқпалы</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">15%</span>
+                            <span class="stat-label">Асқынулар</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Виджет с симптомами -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Жиі кездесетін симптомдар</h3>
+                    <ul class="symptoms-list">
+                        <li class="symptom-item">
+                            <div class="symptom-icon"><i class="fas fa-thermometer-half"></i></div>
+                            <div class="symptom-text">Жоғары температура</div>
+                        </li>
+                        <li class="symptom-item">
+                            <div class="symptom-icon"><i class="fas fa-head-side-cough"></i></div>
+                            <div class="symptom-text">Жөтел (қақырықты)</div>
+                        </li>
+                        <li class="symptom-item">
+                            <div class="symptom-icon"><i class="fas fa-lungs"></i></div>
+                            <div class="symptom-text">Тыныс алудың қиындауы</div>
+                        </li>
+                        <li class="symptom-item">
+                            <div class="symptom-icon"><i class="fas fa-tired"></i></div>
+                            <div class="symptom-text">Әлсіздік, шаршау</div>
+                        </li>
+                        <li class="symptom-item">
+                            <div class="symptom-icon"><i class="fas fa-heartbeat"></i></div>
+                            <div class="symptom-text">Кеуде ауруы</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Виджет с похожими заболеваниями -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Байланысты аурулар</h3>
+                    <ul class="related-list">
+                        <li class="related-item">
+                            <a href="/diseases/cough" class="related-link">
+                                <i class="fas fa-head-side-cough"></i>
+                                Жөтел
+                            </a>
+                        </li>
+                        <li class="related-item">
+                            <a href="/diseases/flu" class="related-link">
+                                <i class="fas fa-virus"></i>
+                                Тұмау
+                            </a>
+                        </li>
+                        <li class="related-item">
+                            <a href="/diseases/bronchitis" class="related-link">
+                                <i class="fas fa-lungs-virus"></i>
+                                Бронхит
+                            </a>
+                        </li>
+                        <li class="related-item">
+                            <a href="/diseases/tonsillitis" class="related-link">
+                                <i class="fas fa-viruses"></i>
+                                Ангина
+                            </a>
+                        </li>
+                        <li class="related-item">
+                            <a href="/diseases/allergy" class="related-link">
+                                <i class="fas fa-head-side-mask"></i>
+                                Аллергия
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
-<div class="image-container" onclick="toggleBlock()">
-    <img id="toggleImage" th:src="@{/images/strelka.png}" alt="Click Me">
-</div>
-<div class="hidden-block" id="hiddenBlock">
-    <a href="#first" class="hover-text">• Тұмаудың болу себептері</a>
-    <a href="#third" class="hover-text">• Үй жағдайында тұмауды емдеу жолдары</a>
-    <a href="#fourth" class="hover-text">• Тұмауға қарсы дәрілер</a>
-</div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Контактілер</h4>
+                <p><i class="fas fa-phone"></i> Телефон нөмірі: +7 (123) 456-78-90</p>
+                <p><i class="fas fa-envelope"></i> Email: info@medbot.kz</p>
+                <p><i class="fas fa-map-marker-alt"></i> Мекен-жайы: Астана қ., Нұр-Сұлтан даңғылы, 37</p>
+            </div>
+            <div class="footer-column">
+                <h4>Біз жайлы</h4>
+                <p>MedBot - медициналық ақпарат пен кеңес беру платформасы. Біз сізге денсаулығыңызды сақтауға көмектесеміз.</p>
+                <p>© 2025 MedBot. Барлық құқықтар қорғалған.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Әлеуметтік желілер</h4>
+                <p class="social-link">
+                    <a href="#" class="social-item">
+                        <img th:src="@{/images/instagram.webp}" alt="Instagram" class="social-img">
+                        Instagram
+                    </a>
+                </p>
+                <p class="social-link">
+                    <a href="#" class="social-item">
+                        <img th:src="@{/images/Facebook.png}" alt="Facebook" class="social-img">
+                        Facebook
+                    </a>
+                </p>
+                <p class="social-link">
+                    <a href="#" class="social-item">
+                        <img th:src="@{/images/ChatGPT.jpg}" alt="Telegram" class="social-img">
+                        Telegram
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
 
-<div id="first" class="disease-content">
-    <div class="column">
-        <img id="toggleImage" th:src="@{/images/kazhel15.jpg}" alt="Click Me">
-    </div>
-    <div class="column">
-        <p class="disease-text">
-            Жөтелдің пайда болу себептері:
-            Инфекциялық аурулар
-
-            Жедел респираторлық вирустық инфекциялар (ЖРВИ), тұмау.
-            Бронхит, пневмония, туберкулез.
-            Аллергиялық реакциялар
-
-            Шаң, тозаң, жануарлардың жүніне аллергия.
-            Химиялық заттар мен иістерге реакция.
-            Асқазан-ішек жолдарының мәселелері
-
-            Қышқылдың өңешке кері түсуі (гастроэзофагеалдық рефлюкс).
-            Тыныс алу жолдарының тітіркенуі
-
-            Түтін, шаң, химиялық булар.
-            Темекі шегу.
-            Созылмалы аурулар
-
-            Бронхиалды демікпе.
-            Хроникалық обструктивті өкпе ауруы (ХОӨА).
-            Жүрек-қан тамырлары аурулары
-
-            Жүрек жеткіліксіздігі (өкпеде сұйықтықтың жиналуынан пайда болатын жөтел).
-            Жүйкелік факторлар
-
-            Стрестік немесе психосоматикалық жөтел.
-            Медициналық препараттардың жанама әсері
-
-            Кейбір гипертензияға қарсы дәрілер (мысалы, АӨФ ингибиторлары).
-            Егер жөтел ұзақ уақыт бойы тоқтамаса немесе қосымша белгілер (қақырық, қызу, тыныс алудың қиындауы) байқалса, міндетті түрде дәрігерге қаралу қажет.
-
-        </p>
-    </div>
-</div>
-
-<div id="second" class="disease-content">
-    <div class="column">
-        <img id="toggleImage" th:src="@{/images/kazhel11.jpg}" alt="Click Me">
-    </div>
-    <div class="column">
-        <p class="disease-text">
-            Нәрестенің жөтелін емдеу жолдары
-            Нәрестенің жөтелін емдеу – ерекше назарды талап ететін процесс. Дәрі-дәрмектерді дәрігердің тағайындауынсыз қолдануға болмайды. Төменде жөтелді жеңілдетуге арналған қауіпсіз және жалпы әдістер келтірілген.
-
-            1. Ылғалды ауа
-            Бөлмені ылғалдандыру: Ауа ылғалдандырғышты қолдану немесе бөлмеге су ыдыстарын қою.
-            Желдету: Бөлмедегі ауаны таза ұстау, бірақ нәрестені суық желден қорғау.
-            2. Мұрынды тазалау
-            Тұзды ерітінді қолдану: Мұрынға арнайы тұзды ерітіндіні тамызып, аспиратор арқылы тазалау.
-            Тыныс алуды жақсарту: Мұрын бітелуі жөтелді күшейтеді, сондықтан мұрынды таза ұстау маңызды.
-            3. Көп сұйықтық беру
-            Ана сүті: Емізу жөтел кезінде иммунитетті күшейтуге көмектеседі.
-            Судың мөлшері: Егер нәресте қосымша тамақтанып жүрсе, су беру арқылы сұйықтық балансын сақтау.
-            4. Буындырушы әсерлерден аулақ болу
-            Темекі түтіні, шаң, өткір иістер нәрестенің жөтелін күшейтеді.
-            Бөлменің таза және иістерден бос болуын қадағалау.
-            5. Массаж жасау
-            Жеңіл массаж: Жөтел кезінде нәрестенің арқасын жеңіл қаққылау шырыштың шығуына көмектеседі.
-            Денені тіктеп ұстау: Тік жағдайда шырыштың жиналуы азаяды.
-            6. Дәрігерлік көмек қажет жағдайлар
-            Егер төмендегі белгілер байқалса, дереу дәрігерге жүгіну керек:
-
-            Жөтел 3 күннен артық уақытқа созылса.
-            Қақырықта қан немесе жасыл түсті сұйықтық байқалса.
-            Температура 38°C-тан жоғары болса.
-            Ентігу немесе тыныс алудың қиындауы байқалса.
-            Есіңізде болсын:
-            Жөтел – тек симптом, оның негізгі себебін анықтап, оны емдеу маңызды. Нәрестені емдеу үшін алдымен педиатрдың кеңесіне жүгіну қажет.
-        </p>
-    </div>
-</div>
-
-<div id="third" class="disease-content">
-    <div class="column">
-        <img id="toggleImage" th:src="@{/images/producti.jpg}" alt="Click Me">
-    </div>
-    <div class="column">
-        <p class="disease-text">
-            Үй жағдайында жөтелді емдеу
-            Үй жағдайында жөтелді емдеу үшін төмендегі әдістерді қолдануға болады. Бұл әдістер жөтелдің бастапқы кезеңінде немесе жеңіл түрлерінде тиімді. Ауыр жағдайларда дәрігерге қаралу қажет.
-
-            1. Жылы сусындар
-            Бал мен жылы су: Бір стақан жылы суға бір шай қасық бал қосып, аздап ішкізу. (Бал 1 жасқа дейінгі балаларға қолданылмайды!)
-            Шөп шайлары: Итмұрын, жалбыз немесе түймедақ шайын жылы күйінде беру.
-            2. Ылғалды ауа және бөлмені желдету
-            Бөлме ауасын ылғалдандыру: Ауа ылғалдандырғыш қолдану немесе батареяның қасына су құйылған ыдыс қою.
-            Таза ауа: Бөлмені жиі желдетіп, таза ауа кіруін қамтамасыз ету.
-            3. Бумен демалу (ингаляция)
-            Тұзды су буы: Қайнаған суға тұз қосып, бу арқылы демалдыру (аса ыстық болмауын қадағалау керек).
-            Шөп буы: Қайнаған суға түймедақ немесе жалбыз қосып, демалдыру.
-            4. Кеуде массажы
-            Жөтел кезінде арқаны жеңіл қаққылап, шырыштың шығуына көмектесу.
-            Майлармен массаж: Эвкалипт майын немесе нәрестелерге арналған арнайы майларды қолданып, кеудені және арқаны уқалау.
-            5. Мұрын тазалау
-            Тұзды ерітінді: Дәріханадан дайын ерітінді сатып алу немесе өзіңіз дайындау (1 стакан жылы суға 1 шай қасық тұз).
-            Аспиратор қолдану: Шырышты мұрыннан тазарту тыныс алуды жеңілдетеді.
-            6. Тамаққа көмекші өнімдер
-            Сарымсақ пен бал: Ұсақталған сарымсақты балмен араластырып, аздап қолдану.
-            Имбирь қосылған шай: Жөтелді жеңілдетіп, тыныс жолдарын тазартады.
-            7. Тыныштық және жылы киім
-            Жылы орану: Денені жылы ұстау.
-            Демалыс: Көп демалу иммунитетті күшейтеді.
-            Дәрігерге қашан қаралу керек?
-            Жөтел 5–7 күн ішінде басылмаса.
-            Жоғары температура (38°C-тан жоғары).
-            Қақырықта қан немесе жасыл түсті шырыш болса.
-            Ентігу, тыныс алудың қиындауы.
-            Бұл әдістер қарапайым жағдайларда көмектеседі. Жөтелдің себебін анықтау және дұрыс ем тағайындау үшін дәрігермен кеңескен дұрыс.
-        </p>
-    </div>
-</div>
-
-<div id="fourth" class="disease-content">
-    <div class="column">
-        <img id="toggleImage" th:src="@{/images/tuberkulez.jpg}" alt="Click Me">
-    </div>
-    <div class="column">
-        <p class="disease-text">
-            Жөтелдің туберкулезге дейін апаратын негізгі себептері
-            Туберкулез – өкпе тініне әсер ететін ауыр инфекциялық ауру. Жөтел туберкулездің ең басты белгілерінің бірі болып табылады және келесідей себептер оны асқындыруы немесе осы ауруға алып келуі мүмкін:
-
-            1. Әлсіреген иммунитет
-            Иммундық жүйенің төмендеуі: Вирустық инфекциялар, дұрыс тамақтанбау, стресс, немесе созылмалы аурулар иммунитетті әлсіретеді.
-            АИТВ/ЖИТС: АИТВ-мен ауыратын адамдарда туберкулез қаупі жоғары.
-            2. Жұқпалы ортада болу
-            Инфекция көзімен байланыс: Туберкулез микобактериялары (Кох таяқшалары) науқастың жөтелуінен ауаға тарайды және оны ұзақ уақыт жұқтырмаған адамдар жұқтыруы мүмкін.
-            Жабық кеңістіктер: Туберкулезді жұқтыру қаупі нашар желдетілетін, адамдар көп жиналған жерлерде жоғары.
-            3. Созылмалы жөтелді емдемеу
-            Ұзақ уақыт созылған жөтел (созылмалы бронхит, аллергия немесе өкпе аурулары) өкпені зақымдап, инфекцияға сезімтал етеді.
-            Ерте анықталмаған және емделмеген тыныс алу жолдарының инфекциялары асқынуы мүмкін.
-            4. Туберкулездің латентті формасы
-            Белсенді түрге өту: Кейбір адамдарда туберкулез бактериялары ағзада белсенді емес күйде болады. Иммунитет төмендесе, олар белсенділігін арттырып, ауру туындатады.
-            5. Темекі шегу және зиянды әдеттер
-            Темекі: Өкпе тіндерін зақымдап, инфекцияға қарсы қорғанысты төмендетеді.
-            Алкоголь: Алкогольді шамадан тыс тұтыну иммундық жүйені әлсіретеді.
-            6. Дұрыс тамақтанбау
-            Витамин және минерал жетіспеушілігі: Қоректік заттардың жетіспеуі ағзаның инфекцияға қарсы тұру қабілетін төмендетеді.
-            Салмақ жоғалту: Қажетті қоректік заттардың болмауы туберкулездің даму қаупін арттырады.
-            7. Жұмыс және тұрмыс жағдайлары
-            Жұмыс жағдайы: Шаң, химиялық булармен ұзақ уақыт байланыс өкпеге зиян келтіруі мүмкін.
-            Нашар санитарлық-гигиеналық жағдайлар: Таза судың, тамақтың және тиісті медициналық көмектің болмауы.
-            8. Туберкулездің алдын алмау
-            Вакцинацияның болмауы: BCG вакцинасы туберкулездің ауыр түрлерінен қорғайды.
-            Медициналық тексеруден өтпеу: Ерте диагностика және уақытылы емдеу инфекцияның таралуын болдырмайды.
-            Алдын алу шаралары
-            Иммунитетті нығайту (дұрыс тамақтану, спортпен шұғылдану).
-            Көпшілік ортада гигиенаны сақтау (маска тағу, бөлмені желдету).
-            Ерте диагностика (жөтел 2 аптадан асса, дәрігерге қаралу).
-            Туберкулезге қарсы вакцинация (BCG).
-            Егер ұзақ уақытқа созылған жөтел байқалса, оны елемей, дереу медициналық көмекке жүгіну өте маңызды.
-
-        </p>
-    </div>
-</div>
-
-<div class="footer">
-    <div class="footer-column">
-        <h4>Контактілер</h4>
-        <p>Телефон нөмірі: +7 (123) 456-78-90</p>
-        <p>Email: info@example.com</p>
-    </div>
-    <div class="footer-column">
-        <h4>Біз жайлы</h4>
-        <p>Біз медицина және денсаулық сақтау саласында сапалы қызмет көрсетеміз. Біздің міндетіміз – сіздің денсаулығыңызды күту.</p>
-    </div>
-    <div class="footer-column">
-        <h4>Әлеуметтік желілер</h4>
-        <p class="social-link">
-            <a href="#" class="social-item">
-                <img th:src="@{/images/instagram.webp}" alt="Instagram" class="social-img">
-                Instagram
-            </a>
-        </p>
-        <p class="social-link">
-            <a href="#" class="social-item">
-                <img th:src="@{/images/Facebook.png}" alt="Facebook" class="social-img">
-                Facebook
-            </a>
-        </p>
-        <p class="social-link">
-            <a href="#" class="social-item">
-                <img th:src="@{/images/ChatGPT.jpg}" alt="ChatGPT" class="social-img">
-                ChatGPT
-            </a>
-        </p>
-    </div>
-</div>
-
-<script th:src="@{/scripts/script.js}"></script>
+    <!-- JavaScript -->
+    <script th:src="@{/scripts/script.js}"></script>
+    <script>
+        function toggleBlock() {
+            const hiddenBlock = document.getElementById('hiddenBlock');
+            const toggleImage = document.getElementById('toggleImage');
+            
+            if (hiddenBlock.style.display === 'block') {
+                hiddenBlock.style.left = '-300px';
+                toggleImage.style.left = '0';
+                setTimeout(() => {
+                    hiddenBlock.style.display = 'none';
+                }, 300);
+            } else {
+                hiddenBlock.style.display = 'block';
+                setTimeout(() => {
+                    hiddenBlock.style.left = '0';
+                    toggleImage.style.left = '250px';
+                }, 10);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.hover-text');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        
+                        const hiddenBlock = document.getElementById('hiddenBlock');
+                        const toggleImage = document.getElementById('toggleImage');
+                        
+                        hiddenBlock.style.left = '-300px';
+                        toggleImage.style.left = '0';
+                        setTimeout(() => {
+                            hiddenBlock.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+            
+            const sections = document.querySelectorAll('.content-section');
+            
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                sections.forEach(section => {
+                    section.style.opacity = '0';
+                    section.style.transform = 'translateY(30px)';
+                    section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    observer.observe(section);
+                });
+            }
+        });
+    </script>
 </body>
 </html>

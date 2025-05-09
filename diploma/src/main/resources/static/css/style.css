@@ -585,6 +585,10 @@ button:active, .button:active {
     transform: translateX(5px);
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 /* Улучшенный футер */
 .footer {
     background-color: var(--primary-color);

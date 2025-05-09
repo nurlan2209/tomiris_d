@@ -27,32 +27,38 @@ public class MainController {
     }
 
     @GetMapping("/more-details1")
-    public String moreDetails1(Model model) {
+    public String moreDetails1(Model model, Authentication authentication) {
+        model.addAttribute("authentication", authentication); 
         return "more-details1";
     }
 
     @GetMapping("/more-details2")
-    public String moreDetails2(Model model) {
+    public String moreDetails2(Model model, Authentication authentication) {
+        model.addAttribute("authentication", authentication); 
         return "more-details2";
     }
 
     @GetMapping("/more-details3")
-    public String moreDetails3(Model model) {
+    public String moreDetails3(Model model, Authentication authentication) {
+        model.addAttribute("authentication", authentication); 
         return "more-details3";
     }
 
     @GetMapping("/more-details4")
-    public String moreDetails4(Model model) {
+    public String moreDetails4(Model model, Authentication authentication) {
+        model.addAttribute("authentication", authentication); 
         return "more-details4";
     }
 
     @GetMapping("/more-details5")
-    public String moreDetails5(Model model) {
+    public String moreDetails5(Model model, Authentication authentication) {
+        model.addAttribute("authentication", authentication); 
         return "more-details5";
     }
 
     @GetMapping("/more-details6")
-    public String moreDetails6(Model model) {
+    public String moreDetails6(Model model, Authentication authentication) {
+        model.addAttribute("authentication", authentication); 
         return "more-details6";
     }
 

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MedBot - Ангина туралы ақпарат</title>
+    <title>MedBot - Подробная информация о заболевании</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/animations.css">
-    <link rel="stylesheet" href="/css/disease-details.css">
+    <link rel="stylesheet" href="/css/disease-details.css"> <!-- Добавить новый CSS файл -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -36,10 +36,9 @@
     <!-- Banner -->
     <section class="banner-details">
         <div class="banner-content">
-            <h1 class="page-title">Ангина туралы толық ақпарат</h1>
+            <h1 class="page-title">Жөтел туралы толық ақпарат</h1>
         </div>
     </section>
-
 
     <!-- Основной контент -->
     <div class="disease-details-container">
@@ -49,13 +48,13 @@
             <span class="breadcrumbs-separator"><i class="fas fa-chevron-right"></i></span>
             <a th:href="@{/diseases}">Аурулар</a>
             <span class="breadcrumbs-separator"><i class="fas fa-chevron-right"></i></span>
-            <span>Ангина</span>
+            <span>Жөтел</span>
         </div>
 
         <!-- Заголовок -->
         <div class="disease-header">
-            <h1 class="disease-title">Ангина</h1>
-            <p class="disease-subtitle">Тамақтың бадамша бездерінің қабынуымен сипатталатын инфекциялық ауру</p>
+            <h1 class="disease-title">Жөтел</h1>
+            <p class="disease-subtitle">Тыныс алу жүйесі ауруларының ең жиі кездесетін белгілерінің бірі</p>
         </div>
 
         <!-- Основной контент и боковая панель -->
@@ -64,59 +63,61 @@
             <div class="content-main">
                 <!-- Секция 1 -->
                 <div id="section1" class="content-section">
-                    <h2 class="section-title">Ангинаның пайда болу себептері</h2>
+                    <h2 class="section-title">Жөтелдің пайда болу себептері</h2>
                     <div class="section-content">
-                        <p>Ангина (тонзиллит) – бадамша бездердің қабынуы, әдетте инфекциялық сипатта болады. Оның себептері:</p>
+                        <p>Жөтел – бұл ағзаның тыныс алу жолдарынан бөгде заттарды немесе шырышты шығаруға бағытталған қорғаныс реакциясы. Оның пайда болу себептері:</p>
                         <ul>
-                            <li><strong>Бактериялық инфекциялар:</strong> Ең жиі себебі – стрептококк (Streptococcus pyogenes).</li>
-                            <li><strong>Вирустық инфекциялар:</strong> Аденовирус, Эпштейн-Барр вирусы, тұмау вирусы.</li>
-                            <li><strong>Иммунитеттің төмендеуі:</strong> Суық тию, стресс, созылмалы аурулар.</li>
-                            <li><strong>Жұқпалы орта:</strong> Науқас адаммен жақын байланыс, ортақ ыдыс-аяқ пайдалану.</li>
-                            <li><strong>Тамақтың тітіркенуі:</strong> Суық тағамдар, шаң, түтін.</li>
-                            <li><strong>Созылмалы инфекциялар:</strong> Синусит, кариес, ринит сияқты ошақтар.</li>
+                            <li><strong>Инфекциялық аурулар:</strong> ЖРВИ, тұмау, бронхит, пневмония, туберкулез.</li>
+                            <li><strong>Аллергиялық реакциялар:</strong> Шаң, тозаң, жануарлардың жүніне аллергия.</li>
+                            <li><strong>Асқазан-ішек жолдарының мәселелері:</strong> Қышқылдың өңешке кері түсуі (гастроэзофагеалдық рефлюкс).</li>
+                            <li><strong>Тыныс алу жолдарының тітіркенуі:</strong> Түтін, шаң, химиялық булар немесе темекі шегу.</li>
+                            <li><strong>Созылмалы аурулар:</strong> Бронхиалды демікпе, хроникалық обструктивті өкпе ауруы (ХОӨА).</li>
+                            <li><strong>Жүрек-қан тамырлары аурулары:</strong> Жүрек жеткіліксіздігі (өкпеде сұйықтықтың жиналуынан пайда болатын жөтел).</li>
+                            <li><strong>Жүйкелік факторлар:</strong> Стрестік немесе психосоматикалық жөтел.</li>
+                            <li><strong>Медициналық препараттардың жанама әсері:</strong> Кейбір гипертензияға қарсы дәрілер.</li>
                         </ul>
-                        <img th:src="@{/images/kazhel15.jpg}" alt="Ангина себебі" class="section-image">
                     </div>
                 </div>
 
                 <!-- Секция 2 -->
                 <div id="section2" class="content-section">
-                    <h2 class="section-title">Ангинаның түрлері</h2>
+                    <h2 class="section-title">Жөтелдің түрлері</h2>
                     <div class="section-content">
-                        <p>Ангина әртүрлі түрде болады, олар себептері мен клиникалық көрінісіне байланысты:</p>
+                        <p>Жөтелдің бірнеше түрі бар, олардың әрқайсысы ауру процесінің ерекшеліктерін көрсетеді:</p>
+                        
                         <table class="info-table">
                             <thead>
                                 <tr>
-                                    <th>Ангина түрі</th>
+                                    <th>Жөтел түрі</th>
                                     <th>Сипаттамасы</th>
                                     <th>Жиі кездесетін себептері</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Катаральды ангина</td>
-                                    <td>Жеңіл түрі, бадамша бездердің беткей қабынуы</td>
-                                    <td>Вирустар, стрептококк</td>
+                                    <td>Құрғақ жөтел</td>
+                                    <td>Қақырықсыз, тамақтың тітіркенуінен туындайды</td>
+                                    <td>ЖРВИ-дің бастапқы кезеңі, аллергия, фарингит</td>
                                 </tr>
                                 <tr>
-                                    <td>Фолликулярлық ангина</td>
-                                    <td>Бадамша бездерде іріңді бөртпелер пайда болады</td>
-                                    <td>Стрептококк</td>
+                                    <td>Ылғалды жөтел</td>
+                                    <td>Қақырықпен бірге жүреді</td>
+                                    <td>Бронхит, пневмония, ХОӨА</td>
                                 </tr>
                                 <tr>
-                                    <td>Лакунарлық ангина</td>
-                                    <td>Іріңді жабындылар бадамша бездердің ойыстарында жиналады</td>
-                                    <td>Бактериялық инфекция</td>
+                                    <td>Сиқырлаған жөтел</td>
+                                    <td>Күшті, дыбыстық, ысқырық түрінде</td>
+                                    <td>Жоғарғы тыныс жолдарының обструкциясы, көкжөтел</td>
                                 </tr>
                                 <tr>
-                                    <td>Герпетикалық ангина</td>
-                                    <td>Тамақта көпіршіктер пайда болады</td>
-                                    <td>Коксаки вирусы</td>
+                                    <td>Созылмалы жөтел</td>
+                                    <td>8 аптадан астам уақытқа созылады</td>
+                                    <td>ХОӨА, асқына түскен демікпе, рефлюкс</td>
                                 </tr>
                             </tbody>
                         </table>
-                        <p>Ангина түрі дұрыс ем тағайындау үшін маңызды. Бактериялық ангина антибиотиктерді қажет етеді, ал вирустық ангина симптоматикалық емдеуді талап етеді.</p>
-                        <img th:src="@{/images/kazhel11.jpg}" alt="Ангина түрлері" class="section-image">
+                        
+                        <p>Жөтелдің түрі мен сипаттамасы диагностика үшін маңызды. Мысалы, таңертеңгі қақырықпен жөтелу көбінесе созылмалы бронхит немесе темекі шегумен байланысты, ал түнгі жөтел жүрек жеткіліксіздігіне немесе рефлюкске нұсқауы мүмкін.</p>
                     </div>
                 </div>
 
@@ -124,18 +125,22 @@
                 <div id="section3" class="content-section">
                     <h2 class="section-title">Үй жағдайында емдеу</h2>
                     <div class="section-content">
-                        <p>Ангинаның жеңіл түрлерін үйде емдеуге болады, бірақ бактериялық ангина үшін дәрігер кеңесі қажет:</p>
+                        <p>Құрғақ жөтел жағдайында:</p>
                         <ul>
-                            <li><strong>Тамақты шаю:</strong> Тұзды ерітінді (1 шай қасық тұз + 1 стакан жылы су), түймедақ немесе календула отвары.</li>
-                            <li><strong>Көп сұйықтық ішу:</strong> Жылы шай, сорпа, жеміс шырындары.</li>
-                            <li><strong>Жылы сусындар:</strong> Бал мен лимон қосылған шай, жылы сүт.</li>
-                            <li><strong>Тамақты жұмсарту:</strong> Спрейлер (мысалы, хлоргексидин) немесе пастилкалар (Стрепсилс).</li>
-                            <li><strong>Демалыс:</strong> Төсек режимін сақтау, физикалық жүктемені азайту.</li>
-                            <li><strong>Ылғалды ауа:</strong> Ауа ылғалдандырғыш қолдану, бөлмені желдету.</li>
-                            <li><strong>Жұмсақ тамақ:</strong> Пюре, сорпа, йогурт сияқты тітіркендірмейтін тағамдар.</li>
+                            <li>Көп сұйықтық ішу – су, шай, компот.</li>
+                            <li>Ылғалды ауа – ылғалдандырғыш қолдану немесе ылғалды сүлгіні радиаторға ілу.</li>
+                            <li>Бал қосылған жылы сүт (ересектер мен 1 жастан асқан балалар үшін).</li>
+                            <li>Шөптік шай – түймедақ, жалбыз, жөке.</li>
                         </ul>
-                        <p>Антибиотиктерді тек дәрігердің тағайындауымен қабылдау керек. Халықтық емдерді қолданар алдында маманмен кеңескен дұрыс.</p>
-                        <img th:src="@{/images/producti.jpg}" alt="Үйде емдеу" class="section-image">
+                        
+                        <p>Ылғалды жөтел жағдайында:</p>
+                        <ul>
+                            <li>Бумен ингаляция – қайнаған ыстық суға еңкейіп, оның буын ішке тарту (абай болыңыз!).</li>
+                            <li>Тұзды ерітіндімен шаю – тамақты шаю жөтелді жеңілдетеді.</li>
+                            <li>Дене қалпы – жатқан кезде басты сәл көтеріңкіреу.</li>
+                        </ul>
+                        
+                        <p>Жөтелге арналған халық емдерін қолданар алдында дәрігермен кеңесу ұсынылады, әсіресе ауыр жағдайларда немесе созылмалы ауруларда.</p>
                     </div>
                 </div>
 
@@ -145,14 +150,16 @@
                     <div class="section-content">
                         <p>Төмендегі жағдайларда дәрігерге қаралу қажет:</p>
                         <ul>
-                            <li>Температура 38°C-тан жоғары болса және 3 күннен артық сақталса.</li>
-                            <li>Тамақта іріңді жабындылар немесе қатты ауырсыну байқалса.</li>
-                            <li>Жұтыну қиын болса немесе тамақ іше алмаса.</li>
-                            <li>Лимфа түйіндерінің ісінуі немесе қатты әлсіздік болса.</li>
-                            <li>Тыныс алу қиындаса немесе дауыс өзгерсе.</li>
-                            <li>Симптомдар 5-7 күннен кейін жақсармаса.</li>
+                            <li>Жөтел 3 аптадан астам уақытқа созылса.</li>
+                            <li>Қақырықта қан байқалса.</li>
+                            <li>Тыныс алу қиындаса немесе ентігу пайда болса.</li>
+                            <li>Қызба 38°C-тан жоғары болса және төмендемесе.</li>
+                            <li>Жөтелмен бірге күшті кеуде ауруы пайда болса.</li>
+                            <li>Жөтел түнде ұйықтауға кедергі келтірсе.</li>
+                            <li>Жөтел салдарынан әлсіздік, салмақ жоғалту байқалса.</li>
                         </ul>
-                        <p>Ангина асқынуларға (ревматизм, бүйрек аурулары, абсцесс) әкелуі мүмкін, сондықтан уақтылы емдеу маңызды.</p>
+                        
+                        <p>Балалардағы жөтелге де ерекше назар аудару керек. Дәрігерлік тексеру баланың жөтелі күшейген, ұзаққа созылған немесе ысқырықпен бірге жүрген жағдайда қажет.</p>
                     </div>
                 </div>
             </div>
@@ -161,23 +168,23 @@
             <div class="content-sidebar">
                 <!-- Виджет со статистикой -->
                 <div class="sidebar-widget">
-                    <h3 class="widget-title">Ангина туралы статистика</h3>
+                    <h3 class="widget-title">Жөтел туралы статистика</h3>
                     <div class="widget-stats">
                         <div class="stat-item">
-                            <span class="stat-value">70%</span>
+                            <span class="stat-value">75%</span>
                             <span class="stat-label">Жиілігі</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-value">5-10</span>
+                            <span class="stat-value">5-7</span>
                             <span class="stat-label">Емделу күні</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-value">80%</span>
+                            <span class="stat-value">90%</span>
                             <span class="stat-label">Жұқпалы</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-value">10%</span>
-                            <span class="stat-label">Асқынулар</span>
+                            <span class="stat-value">30%</span>
+                            <span class="stat-label">Созылмалы</span>
                         </div>
                     </div>
                 </div>
@@ -187,11 +194,15 @@
                     <h3 class="widget-title">Жиі кездесетін симптомдар</h3>
                     <ul class="symptoms-list">
                         <li class="symptom-item">
+                            <div class="symptom-icon"><i class="fas fa-lungs"></i></div>
+                            <div class="symptom-text">Тыныс жолдары тітіркенуі</div>
+                        </li>
+                        <li class="symptom-item">
                             <div class="symptom-icon"><i class="fas fa-thermometer-half"></i></div>
                             <div class="symptom-text">Жоғары температура</div>
                         </li>
                         <li class="symptom-item">
-                            <div class="symptom-icon"><i class="fas fa-head-side-virus"></i></div>
+                            <div class="symptom-icon"><i class="fas fa-head-side-cough"></i></div>
                             <div class="symptom-text">Тамақ ауруы</div>
                         </li>
                         <li class="symptom-item">
@@ -199,12 +210,8 @@
                             <div class="symptom-text">Әлсіздік, шаршау</div>
                         </li>
                         <li class="symptom-item">
-                            <div class="symptom-icon"><i class="fas fa-lymph-nodes"></i></div>
-                            <div class="symptom-text">Лимфа түйіндерінің ісінуі</div>
-                        </li>
-                        <li class="symptom-item">
-                            <div class="symptom-icon"><i class="fas fa-head-side-cough"></i></div>
-                            <div class="symptom-text">Жұтынудың қиындауы</div>
+                            <div class="symptom-icon"><i class="fas fa-pills"></i></div>
+                            <div class="symptom-text">Бас ауруы</div>
                         </li>
                     </ul>
                 </div>
@@ -214,31 +221,31 @@
                     <h3 class="widget-title">Байланысты аурулар</h3>
                     <ul class="related-list">
                         <li class="related-item">
-                            <a href="/diseases/cough" class="related-link">
-                                <i class="fas fa-head-side-cough"></i>
-                                Жөтел
-                            </a>
-                        </li>
-                        <li class="related-item">
-                            <a href="/diseases/flu" class="related-link">
+                            <a href="#" class="related-link">
                                 <i class="fas fa-virus"></i>
                                 Тұмау
                             </a>
                         </li>
                         <li class="related-item">
-                            <a href="/diseases/bronchitis" class="related-link">
+                            <a href="#" class="related-link">
                                 <i class="fas fa-lungs-virus"></i>
                                 Бронхит
                             </a>
                         </li>
                         <li class="related-item">
-                            <a href="/diseases/pneumonia" class="related-link">
+                            <a href="#" class="related-link">
+                                <i class="fas fa-viruses"></i>
+                                Ангина
+                            </a>
+                        </li>
+                        <li class="related-item">
+                            <a href="#" class="related-link">
                                 <i class="fas fa-bacterium"></i>
                                 Пневмония
                             </a>
                         </li>
                         <li class="related-item">
-                            <a href="/diseases/allergy" class="related-link">
+                            <a href="#" class="related-link">
                                 <i class="fas fa-head-side-mask"></i>
                                 Аллергия
                             </a>
