@@ -264,7 +264,7 @@
                         <div class="form-group">
                             <label for="symptoms">Симптомдар</label>
                             <textarea id="symptoms" name="symptoms" th:text="${symptoms}" rows="6" required class="form-control" 
-                                    placeholder="Мысалы: Менде үш күн бойы жоғары температура және жөтел бар. Сондай-ақ әлсіздік пен бас ауруын сеземін."></textarea>
+                                    readonly style="background-color: #f5f5f5;"></textarea>
                         </div>
                         
                         <p>Жиі кездесетін симптомдар:</p>
@@ -278,6 +278,9 @@
                             <span class="symptom-tag" onclick="addSymptom('Тамадағы ауру')">Тамадағы ауру</span>
                             <span class="symptom-tag" onclick="addSymptom('Ентігу')">Ентігу</span>
                             <span class="symptom-tag" onclick="addSymptom('Қатты шаршау')">Қатты шаршау</span>
+                            <span class="symptom-tag" onclick="clearSymptoms()" style="background-color: rgba(255, 87, 87, 0.1); color: #ff5757;">
+                                <i class="fas fa-times"></i> Тазалау
+                            </span>
                         </div>
                         
                         <div class="form-submit">
@@ -356,6 +359,23 @@
             }
             
             symptomsTextarea.focus();
+        }
+
+        function addSymptom(symptom) {
+            const symptomsTextarea = document.getElementById('symptoms');
+            const currentText = symptomsTextarea.value;
+            
+            if (currentText === '') {
+                symptomsTextarea.value = symptom;
+            } else if (currentText.endsWith('.') || currentText.endsWith('!') || currentText.endsWith('?')) {
+                symptomsTextarea.value = currentText + ' ' + symptom;
+            } else {
+                symptomsTextarea.value = currentText + (currentText.endsWith(' ') ? '' : ', ') + symptom;
+            }
+        }
+        
+        function clearSymptoms() {
+            document.getElementById('symptoms').value = '';
         }
     </script>
 </body>

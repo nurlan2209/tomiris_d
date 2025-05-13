@@ -2209,3 +2209,12 @@ button:active, .button:active {
         font-size: 1rem;
     }
 }
+
+textarea[readonly] {
+    background-color: #f5f5f5;
+    cursor: default;
+}
+
+.symptom-tag {
+    margin-bottom: 8px;
+}

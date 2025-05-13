@@ -217,7 +217,14 @@
                 <!-- Результаты расчета ИМТ, если есть -->
                 <div th:if="${bmi != null}" class="bmi-result active">
                     <div class="bmi-value" th:text="${#numbers.formatDecimal(bmi, 1, 1)}">25.0</div>
-                    <div class="bmi-category" th:text="${bmiCategory == 'NORMAL' ? 'Қалыпты дене салмағы' : bmiCategory == 'OVERWEIGHT' ? 'Артық салмақ' : bmiCategory == 'OBESE' ? 'Семіздік' : bmiCategory == 'UNDERWEIGHT' ? 'Салмақ жетіспеушілігі' : bmiCategory == 'SEVERE_UNDERWEIGHT' ? 'Аса қатты салмақ жетіспеушілігі' : bmiCategory == 'OBESITY_CLASS_I' ? 'I дәрежелі семіздік' : bmiCategory == 'OBESITY_CLASS_II' ? 'II дәрежелі семіздік' : 'III дәрежелі семіздік'}">Қалыпты дене салмағы</div>
+                    <div class="bmi-category" th:text="${bmi < 16 ? 'Аса қатты салмақ жетіспеушілігі' : 
+                                      (bmi >= 16 && bmi < 18.5) ? 'Салмақ жетіспеушілігі' : 
+                                      (bmi >= 18.5 && bmi < 25) ? 'Қалыпты дене салмағы' : 
+                                      (bmi >= 25 && bmi < 30) ? 'Артық салмақ' : 
+                                      (bmi >= 30 && bmi < 35) ? 'I дәрежелі семіздік' : 
+                                      (bmi >= 35 && bmi < 40) ? 'II дәрежелі семіздік' : 
+                                      'III дәрежелі семіздік'}">
+                    </div>
                     <div class="bmi-explanation">
                         <p>ДСИ мына формула бойынша есептеледі: салмақ (кг) / (бой (м) * бой (м))</p>
                         <p>
